@@ -32,8 +32,8 @@ export default function ServicesPage() {
 
       {/* CTA */}
       <section className="section-padding bg-[var(--color-background)] border-t border-[var(--color-border)]">
-        <div className="container-main text-center">
-          <div className="max-w-3xl mx-auto bg-white border border-[var(--color-border)] p-10 sm:p-14 shadow-xs flex flex-col items-center">
+        <div className="container-main flex flex-col items-center justify-center text-center">
+          <div className="w-full max-w-3xl mx-auto bg-white border border-[var(--color-border)] p-10 sm:p-14 shadow-xs flex flex-col items-center justify-center text-center">
             <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-3">
               CONSULTATION
             </p>
@@ -97,7 +97,8 @@ function ServiceSection({ service, index }: { service: any; index: number }) {
               </div>
             </div>
 
-            <div className="pt-2 sm:pt-4">
+            {/* Separated Book Dental Button placed below services with generous spacing */}
+            <div className="mt-8 sm:mt-10 pt-6 border-t border-[var(--color-border)]">
               <Link href="/appointment" className="btn-primary inline-flex w-full sm:w-auto justify-center text-center">
                 <span>Book {service.name}</span>
                 <ArrowRight size={14} />

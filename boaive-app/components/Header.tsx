@@ -39,9 +39,9 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
           menuOpen
-            ? 'bg-[var(--color-primary)] border-b border-white/10'
+            ? 'opacity-0 pointer-events-none'
             : scrolled
             ? 'bg-[var(--color-background)]/95 backdrop-blur-md border-b border-[var(--color-border)]'
             : 'bg-gradient-to-b from-[var(--color-background)]/80 via-[var(--color-background)]/40 to-transparent'

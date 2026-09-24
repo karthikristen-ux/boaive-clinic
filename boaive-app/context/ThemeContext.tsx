@@ -70,6 +70,23 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return colorPalettes.find(p => p.id === config.colorPalette) || colorPalettes[0];
   }, [config.colorPalette]);
 
+  React.useEffect(() => {
+    const palette = colorPalettes.find(p => p.id === config.colorPalette) || colorPalettes[0];
+    const root = document.documentElement;
+    root.style.setProperty('--color-background', palette.background);
+    root.style.setProperty('--color-foreground', palette.foreground);
+    root.style.setProperty('--color-primary', palette.primary);
+    root.style.setProperty('--color-secondary', palette.secondary);
+    root.style.setProperty('--color-accent', palette.accent);
+    root.style.setProperty('--color-accent-foreground', palette.accentForeground);
+    root.style.setProperty('--color-muted', palette.muted);
+    root.style.setProperty('--color-muted-foreground', palette.mutedForeground);
+    root.style.setProperty('--color-border', palette.border);
+    root.style.setProperty('--color-card', palette.card);
+    root.setAttribute('data-theme', config.colorPalette);
+    root.setAttribute('data-motion', config.animationPreset);
+  }, [config.colorPalette, config.animationPreset]);
+
   const resetConfig = useCallback(() => {
     setConfig(defaultConfig);
   }, []);
