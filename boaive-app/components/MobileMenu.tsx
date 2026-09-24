@@ -122,8 +122,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                       onClick={onClose}
                       className={`font-serif text-3xl sm:text-4xl tracking-tight transition-colors duration-200 block py-1 ${
                         isActive
-                          ? 'text-[#e59844]'
-                          : 'text-white/90 hover:text-[#e59844]'
+                          ? 'text-[#c5a880]'
+                          : 'text-white/90 hover:text-[#c5a880]'
                       }`}
                     >
                       {item.label}
@@ -143,7 +143,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 <Link
                   href="/appointment"
                   onClick={onClose}
-                  className="inline-block border border-white/20 hover:border-[#e59844] text-white hover:text-[#e59844] font-body text-xs font-semibold tracking-[0.2em] uppercase py-3.5 px-8 transition-all active:scale-95"
+                  className="inline-block border border-white/20 hover:border-[#c5a880] text-white hover:text-[#c5a880] font-body text-xs font-semibold tracking-[0.2em] uppercase py-3.5 px-8 transition-all active:scale-95"
                 >
                   Book Appointment
                 </Link>
@@ -165,7 +165,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 >
                   {/* Demo Theme Section */}
                   <div className="mb-4">
-                    <p className="text-[#e59844] text-[10px] font-bold tracking-[0.2em] uppercase mb-2.5">
+                    <p className="text-[#c5a880] text-[10px] font-bold tracking-[0.2em] uppercase mb-2.5">
                       DEMO · THEME
                     </p>
                     <div className="grid grid-cols-3 gap-2">
@@ -177,7 +177,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             onClick={() => updateConfig({ colorPalette: theme.id })}
                             className={`text-[10px] font-semibold tracking-wider uppercase py-2 px-2.5 rounded border transition-all text-center ${
                               isCurrent
-                                ? 'border-[#e59844] text-[#e59844] bg-[#e59844]/10 shadow-sm'
+                                ? 'border-[#c5a880] text-[#c5a880] bg-[#c5a880]/15 shadow-sm'
                                 : 'border-white/10 text-white/60 hover:text-white hover:border-white/20 bg-white/5'
                             }`}
                           >
@@ -190,7 +190,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
                   {/* Demo Motion Section */}
                   <div>
-                    <p className="text-[#e59844] text-[10px] font-bold tracking-[0.2em] uppercase mb-2.5">
+                    <p className="text-[#c5a880] text-[10px] font-bold tracking-[0.2em] uppercase mb-2.5">
                       DEMO · MOTION
                     </p>
                     <div className="grid grid-cols-2 gap-2">
@@ -202,7 +202,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                             onClick={() => updateConfig({ animationPreset: motionItem.id })}
                             className={`text-[10px] font-semibold tracking-wider uppercase py-2 px-2.5 rounded border transition-all text-center ${
                               isCurrent
-                                ? 'border-[#e59844] text-[#e59844] bg-[#e59844]/10 shadow-sm'
+                                ? 'border-[#c5a880] text-[#c5a880] bg-[#c5a880]/15 shadow-sm'
                                 : 'border-white/10 text-white/60 hover:text-white hover:border-white/20 bg-white/5'
                             }`}
                           >
@@ -224,7 +224,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 aria-label="Toggle Demo Customizer"
                 aria-expanded={showCustomizer}
               >
-                <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-[#d97706] to-[#f59e0b] shadow-[0_0_12px_rgba(245,158,11,0.7)]" />
+                <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-[#b8986e] to-[#e6ca9e] shadow-[0_0_12px_rgba(200,165,120,0.8)]" />
               </button>
             </div>
           </div>
@@ -234,7 +234,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             {/* CALL */}
             <a
               href={`tel:${config.contact.phone.replace(/\s/g, '')}`}
-              className="flex flex-col items-center justify-center gap-1.5 text-[#e59844] hover:text-[#f59e0b] transition-colors py-1"
+              className="flex flex-col items-center justify-center gap-1.5 text-[#c5a880] hover:text-white transition-colors py-1"
             >
               <Phone size={17} />
               <span className="text-[10px] font-bold tracking-wider uppercase">CALL</span>
@@ -245,7 +245,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               href={`https://wa.me/${config.contact.whatsapp.replace(/\D/g, '')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center gap-1.5 text-[#e59844] hover:text-[#f59e0b] transition-colors py-1"
+              className="flex flex-col items-center justify-center gap-1.5 text-[#c5a880] hover:text-white transition-colors py-1"
             >
               <WhatsAppIcon size={18} />
               <span className="text-[10px] font-bold tracking-wider uppercase">WHATSAPP</span>
@@ -255,7 +255,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <Link
               href="/visit"
               onClick={onClose}
-              className="flex flex-col items-center justify-center gap-1.5 text-[#e59844] hover:text-[#f59e0b] transition-colors py-1"
+              className="flex flex-col items-center justify-center gap-1.5 text-[#c5a880] hover:text-white transition-colors py-1"
             >
               <MapPin size={18} />
               <span className="text-[10px] font-bold tracking-wider uppercase">DIRECTIONS</span>

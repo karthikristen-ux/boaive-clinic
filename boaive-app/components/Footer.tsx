@@ -28,10 +28,11 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Right Columns Container */}
-          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-2 md:pt-3">
+          {/* Right Columns Container - Generous space above so text is never on top of margin */}
+          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-8 sm:pt-10 md:pt-12">
             {/* Column 2: Navigation Links */}
             <div>
+              <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-3 font-semibold">MENU</span>
               <ul className="space-y-2.5 text-xs md:text-sm font-medium text-[#d4d4d4]">
                 <li><Link href="/" className="hover:text-white transition-colors block">Home</Link></li>
                 <li><Link href="/services" className="hover:text-white transition-colors block">Our Services</Link></li>
@@ -43,6 +44,7 @@ export default function Footer() {
 
             {/* Column 3: Contact */}
             <div>
+              <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-3 font-semibold">CONNECT</span>
               <ul className="space-y-2.5 text-xs md:text-sm font-medium text-[#d4d4d4]">
                 <li>
                   <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`} className="hover:text-white transition-colors block">

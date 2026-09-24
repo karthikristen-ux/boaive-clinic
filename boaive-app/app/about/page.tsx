@@ -4,9 +4,9 @@ import DoctorSection from '@/components/DoctorSection';
 
 export default function AboutPage() {
   return (
-    <div style={{ paddingTop: 'calc(var(--header-height) + 36px)' }}>
+    <div style={{ paddingTop: 'var(--header-height)' }}>
       {/* Hero */}
-      <section className="section-padding">
+      <section className="pt-8 sm:pt-12 md:pt-16 pb-12 md:pb-16">
         <div className="container-main">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
             <div>

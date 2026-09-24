@@ -79,7 +79,7 @@ export default function AppointmentPage() {
               </div>
 
               {/* Direct Call Assist Card */}
-              <div className="p-4.5 bg-white border border-[var(--color-border)] shadow-xs flex items-center justify-between">
+              <div className="mt-5 sm:mt-6 p-4.5 bg-white border border-[var(--color-border)] shadow-xs flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold tracking-wider uppercase text-[var(--color-secondary)] mb-0.5">
                     PREFER TO SPEAK WITH US?

@@ -55,6 +55,7 @@ export default function ServicesPage() {
 }
 
 function ServiceSection({ service, index }: { service: any; index: number }) {
+  const { config } = useTheme();
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
 
@@ -97,12 +98,20 @@ function ServiceSection({ service, index }: { service: any; index: number }) {
               </div>
             </div>
 
-            {/* Separated Book Dental Button placed below services with generous spacing */}
-            <div className="mt-8 sm:mt-10 pt-6 border-t border-[var(--color-border)]">
-              <Link href="/appointment" className="btn-primary inline-flex w-full sm:w-auto justify-center text-center">
+            {/* Separated Action Buttons placed below services with generous spacing */}
+            <div className="mt-8 sm:mt-10 pt-6 border-t border-[var(--color-border)] flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6">
+              <Link href={`/appointment?service=${service.slug}`} className="btn-primary inline-flex w-full sm:w-auto justify-center text-center">
                 <span>Book {service.name}</span>
                 <ArrowRight size={14} />
               </Link>
+              <a
+                href={`https://wa.me/${config.contact.whatsapp.replace(/[^0-9]/g, '')}?text=Hi%20Boaive%20Clinic,%20I%20would%20like%20to%20enquire%20about%20${encodeURIComponent(service.name)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-secondary inline-flex w-full sm:w-auto justify-center text-center"
+              >
+                <span>WhatsApp Enquiry</span>
+              </a>
             </div>
           </motion.div>
 
