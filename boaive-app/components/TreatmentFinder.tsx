@@ -54,10 +54,10 @@ export default function TreatmentFinder() {
                 <button
                   key={service.id}
                   onClick={() => setActiveTab(service.id)}
-                  className={`flex items-center gap-2 py-3 px-6 rounded-full transition-all duration-300 whitespace-nowrap shrink-0 ${
+                  className={`flex items-center gap-2 py-3 px-6 rounded-[var(--radius-sm)] border transition-colors duration-200 whitespace-nowrap shrink-0 ${
                     isActive
-                      ? 'bg-[var(--color-accent)] text-[var(--color-accent-foreground)] shadow-[var(--shadow-accent)]'
-                      : 'bg-[var(--color-card)] text-[var(--color-secondary)] shadow-[var(--shadow-sm)] hover:text-[var(--color-primary)]'
+                      ? 'bg-[var(--color-accent)] text-[var(--color-accent-foreground)] border-[var(--color-accent)]'
+                      : 'bg-[var(--color-card)] text-[var(--color-secondary)] border-[var(--color-border)] hover:text-[var(--color-primary)] hover:border-[var(--color-primary)]'
                   }`}
                 >
                   {iconMap[service.id]}

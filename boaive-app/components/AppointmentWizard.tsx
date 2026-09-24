@@ -79,7 +79,7 @@ export default function AppointmentWizard() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', damping: 15 }}
-          className="w-16 h-16 rounded-full bg-[var(--color-accent)] text-white flex items-center justify-center mx-auto mb-8 shadow-[var(--shadow-accent)]"
+          className="w-16 h-16 rounded-full bg-[var(--color-accent)] text-white flex items-center justify-center mx-auto mb-8"
         >
           <Check size={28} />
         </motion.div>
@@ -194,10 +194,10 @@ export default function AppointmentWizard() {
                       setSelectedTreatment('');
                       setStep(2);
                     }}
-                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 rounded-[var(--radius-md)] transition-all duration-300 group cursor-pointer text-left ${
+                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 rounded-[var(--radius-md)] border transition-colors duration-200 group cursor-pointer text-left ${
                       selectedService === service.id
-                        ? 'bg-[var(--color-muted)] shadow-[var(--shadow-sm)] ring-2 ring-[var(--color-accent)]'
-                        : 'bg-[var(--color-card)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5'
+                        ? 'bg-[var(--color-muted)] border-[var(--color-accent)]'
+                        : 'bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]'
                     }`}
                   >
                     <div className="flex items-center gap-4 sm:gap-5 min-w-0">
@@ -247,10 +247,10 @@ export default function AppointmentWizard() {
                       setSelectedTreatment(treatment.id);
                       setStep(3);
                     }}
-                    className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-[var(--radius-sm)] transition-all duration-300 text-left cursor-pointer ${
+                    className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-[var(--radius-sm)] border transition-colors duration-200 text-left cursor-pointer ${
                       selectedTreatment === treatment.id
-                        ? 'bg-[var(--color-muted)] shadow-[var(--shadow-sm)] ring-2 ring-[var(--color-accent)]'
-                        : 'bg-[var(--color-card)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]'
+                        ? 'bg-[var(--color-muted)] border-[var(--color-accent)]'
+                        : 'bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]'
                     }`}
                   >
                     <div className="min-w-0 pr-3">
@@ -367,7 +367,7 @@ export default function AppointmentWizard() {
                           disabled={isDisabled}
                           className={`py-2 px-1 text-xs rounded-[var(--radius-sm)] transition-colors cursor-pointer ${
                             selectedTime === slot
-                              ? 'bg-[var(--color-accent)] text-white font-semibold shadow-[var(--shadow-accent)]'
+                              ? 'bg-[var(--color-accent)] text-white font-semibold'
                               : isDisabled
                               ? 'opacity-30 cursor-not-allowed bg-[var(--color-muted)]'
                               : 'bg-[var(--color-muted)] hover:bg-[var(--color-border)]'

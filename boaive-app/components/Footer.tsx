@@ -8,7 +8,7 @@ export default function Footer() {
   const { config } = useTheme();
 
   return (
-    <footer className="bg-[var(--color-foreground)] text-[#e5e5e5] relative overflow-hidden rounded-t-[2.5rem] pt-20 md:pt-28 lg:pt-32 pb-8 md:pb-12">
+    <footer className="bg-[var(--color-foreground)] text-[#e5e5e5] relative overflow-hidden pt-14 md:pt-16 lg:pt-20 pb-8 md:pb-10">
       <div className="container-main">
         {/* Main Columns Grid - Generous vertical space */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 pb-12 md:pb-16 border-b border-white/10 items-start">

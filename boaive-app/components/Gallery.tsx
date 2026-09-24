@@ -33,9 +33,9 @@ export default function Gallery() {
               <button
                 key={img.id}
                 onClick={() => setActiveImage(i)}
-                className={`px-5 py-2 rounded-full text-[10px] font-bold tracking-[0.1em] uppercase whitespace-nowrap transition-all duration-300 ${
+                className={`px-5 py-2 rounded-[var(--radius-sm)] text-[10px] font-bold tracking-[0.1em] uppercase whitespace-nowrap transition-colors duration-200 ${
                   activeImage === i
-                    ? 'bg-[var(--color-accent)] text-white shadow-[var(--shadow-accent)]'
+                    ? 'bg-[var(--color-accent)] text-white'
                     : 'bg-[var(--color-muted)] text-[var(--color-secondary)] hover:text-[var(--color-primary)]'
                 }`}
               >
