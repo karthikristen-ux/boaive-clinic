@@ -31,18 +31,23 @@ export default function ServicesPage() {
       ))}
 
       {/* CTA */}
-      <section className="section-padding bg-[var(--color-primary)] text-[var(--color-background)]">
+      <section className="section-padding bg-[var(--color-background)] border-t border-[var(--color-border)]">
         <div className="container-main text-center">
-          <h2 className="font-display text-3xl lg:text-4xl font-light mb-6">
-            Ready to get started?
-          </h2>
-          <p className="text-sm opacity-70 mb-10 max-w-md mx-auto">
-            Book an appointment today and take the first step toward better care.
-          </p>
-          <Link href="/appointment" className="btn-primary !bg-[var(--color-accent)] !border-[var(--color-accent)] inline-flex">
-            <span>Book Appointment</span>
-            <ArrowRight size={14} />
-          </Link>
+          <div className="max-w-3xl mx-auto bg-white border border-[var(--color-border)] p-10 sm:p-14 shadow-xs flex flex-col items-center">
+            <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-3">
+              CONSULTATION
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl text-[var(--color-foreground)] mb-4 leading-tight">
+              Ready to get started?
+            </h2>
+            <p className="font-body text-sm sm:text-base text-[var(--color-secondary)] mb-8 max-w-lg mx-auto leading-relaxed">
+              Book an appointment today and take the first step toward personalized, specialist-led care.
+            </p>
+            <Link href="/appointment" className="btn-primary inline-flex">
+              <span>Book Appointment</span>
+              <ArrowRight size={14} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
@@ -56,37 +61,58 @@ function ServiceSection({ service, index }: { service: any; index: number }) {
   return (
     <section ref={ref} id={service.slug} className="section-padding">
       <div className="container-main">
-        <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center ${index % 2 === 1 ? 'lg:direction-rtl' : ''}`}>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 xl:gap-16 items-center">
+          {/* Content Column */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className={index % 2 === 1 ? 'lg:order-2' : ''}
+            className={`lg:col-span-7 flex flex-col justify-between ${index % 2 === 1 ? 'lg:order-2' : ''}`}
           >
-            <p className="text-eyebrow mb-4">{service.name.toUpperCase()}</p>
-            <h2 className="heading-section mb-6">{service.description}</h2>
-            <div className="space-y-4 mb-8">
-              {service.treatments.map((t: any) => (
-                <div key={t.id} className="flex items-start gap-3 py-3 border-b border-[var(--color-border)]">
-                  <div className="w-1.5 h-1.5 rounded-full bg-[var(--color-accent)] mt-2 shrink-0" />
-                  <div>
-                    <p className="font-medium text-sm">{t.name}</p>
-                    <p className="text-xs text-[var(--color-secondary)] mt-0.5">{t.description}</p>
+            <div>
+              <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-3">
+                {service.name.toUpperCase()}
+              </p>
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-4xl xl:text-5xl text-[var(--color-foreground)] leading-tight mb-6">
+                {service.description}
+              </h2>
+
+              {/* Treatments Grid: Spaced out in clean 2-column format on desktop/tablet */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 mb-8 sm:mb-10">
+                {service.treatments.map((t: any) => (
+                  <div
+                    key={t.id}
+                    className="p-4 sm:p-4.5 bg-white border border-[var(--color-border)] shadow-2xs hover:border-[var(--color-primary)] transition-all flex flex-col justify-between"
+                  >
+                    <div>
+                      <h3 className="font-body font-semibold text-sm text-[var(--color-foreground)] mb-1">
+                        {t.name}
+                      </h3>
+                      <p className="text-xs text-[var(--color-secondary)] leading-relaxed">
+                        {t.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-            <Link href="/appointment" className="btn-primary inline-flex">
-              <span>Book {service.name}</span>
-              <ArrowRight size={14} />
-            </Link>
+
+            <div className="pt-2 sm:pt-4">
+              <Link href="/appointment" className="btn-primary inline-flex w-full sm:w-auto justify-center text-center">
+                <span>Book {service.name}</span>
+                <ArrowRight size={14} />
+              </Link>
+            </div>
           </motion.div>
 
+          {/* Image Column: Reduced size, max-height contained, and refined proportions */}
           <motion.div
             initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
             animate={isInView ? { opacity: 1, clipPath: 'inset(0 0 0% 0)' } : {}}
             transition={{ delay: 0.2, duration: 1, ease: [0.77, 0, 0.175, 1] }}
-            className={`relative aspect-[3/4] overflow-hidden ${index % 2 === 1 ? 'lg:order-1' : ''}`}
+            className={`lg:col-span-5 relative aspect-[4/3] sm:aspect-[16/11] lg:aspect-[4/3] max-h-[380px] xl:max-h-[420px] w-full max-w-md mx-auto overflow-hidden border border-[var(--color-border)] shadow-md mt-8 sm:mt-10 lg:mt-0 ${
+              index % 2 === 1 ? 'lg:order-1' : ''
+            }`}
           >
             <img
               src={service.image}
