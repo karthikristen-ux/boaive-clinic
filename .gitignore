@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Next.js
+.next/
+**/.next/
+out/
+**/out/
+build/
+**/build/
+
+# Misc
+.DS_Store
+*.pem
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment
+.env*
+!.env.example
+
+# Vercel & TS
+.vercel/
+**/.vercel/
+*.tsbuildinfo
+next-env.d.ts
