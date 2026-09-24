@@ -2,121 +2,94 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { ArrowRight } from 'lucide-react';
+import { usePathname } from 'next/navigation';
+import { Menu, X, ChevronRight, Phone } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 import ClinicLogo from '@/components/ClinicLogo';
-import MobileMenu from './MobileMenu';
 
 const navItems = [
   { label: 'Home', href: '/' },
-  { label: 'Services', href: '/services' },
+  { label: 'Treatments', href: '/services' },
+  { label: 'Results', href: '/results' },
   { label: 'About', href: '/about' },
-  { label: 'Visit', href: '/visit' },
+  { label: 'Visit Us', href: '/visit' },
 ];
 
 export default function Header() {
   const { config } = useTheme();
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  useEffect(() => {
-    if (menuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
+    document.body.style.overflow = open ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
-  }, [menuOpen]);
+  }, [open]);
+
+  const isActive = (href: string) => (href === '/' ? pathname === '/' : pathname.startsWith(href));
+  const tel = `tel:${config.contact.phone.replace(/\s/g, '')}`;
 
   return (
     <>
-      <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
-          menuOpen
-            ? 'opacity-0 pointer-events-none'
-            : scrolled
-            ? 'bg-[var(--color-background)]/95 backdrop-blur-md border-b border-[var(--color-border)]'
-            : 'bg-gradient-to-b from-[var(--color-background)]/80 via-[var(--color-background)]/40 to-transparent'
-        }`}
-        style={{
-          height: scrolled ? 'var(--header-height-scrolled)' : 'var(--header-height)',
-        }}
-      >
-        <div className="container-main h-full grid grid-cols-2 lg:grid-cols-3 items-center">
-          {/* Logo - Left */}
-          <div className="flex items-center justify-start">
-            <Link href="/" className="relative z-10" onClick={() => setMenuOpen(false)}>
-              <ClinicLogo
-                clinicName={config.clinicName}
-                variant={menuOpen ? "light" : "dark"}
-                size="sm"
-              />
-            </Link>
-          </div>
+      <header className="site-header">
+        <div className="container">
+          <ClinicLogo />
 
-          {/* Desktop Navigation - Center */}
-          <nav className="hidden lg:flex items-center justify-center gap-8" role="navigation" aria-label="Main navigation">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="relative text-[10px] font-semibold tracking-[0.15em] uppercase text-[var(--color-primary)] transition-colors duration-300 hover:text-[var(--color-secondary)] group py-2"
-              >
-                <span>{item.label}</span>
-                <span className="absolute bottom-0 left-0 w-0 h-[1px] bg-[var(--color-primary)] transition-all duration-300 group-hover:w-full" />
+          <nav className="nav-desktop" aria-label="Main">
+            {navItems.map(item => (
+              <Link key={item.href} href={item.href} className={isActive(item.href) ? 'active' : ''}>
+                {item.label}
               </Link>
             ))}
           </nav>
 
-          {/* Right Actions - Button + Menu */}
-          <div className="flex items-center justify-end gap-6">
-            <div className="hidden lg:block">
-              <Link
-                href="/appointment"
-                className="btn-primary !py-2.5 !px-5 !text-[11px]"
-              >
-                <span>Book Appointment</span>
-                <ArrowRight size={14} className="opacity-90" />
-              </Link>
-            </div>
-            
-            {/* Hamburger Menu */}
-            <button
-              className="relative z-10 w-10 h-10 flex flex-col items-center justify-center gap-1.5 hover:opacity-70 transition-opacity lg:hidden"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              aria-expanded={menuOpen}
-            >
-              <span
-                className={`block w-6 h-[1.5px] transition-all duration-300 ${
-                  menuOpen ? 'bg-white rotate-45 translate-y-[3.5px]' : 'bg-[var(--color-primary)]'
-                }`}
-              />
-              <span
-                className={`block w-6 h-[1.5px] transition-all duration-300 ${
-                  menuOpen ? 'opacity-0 bg-white' : 'bg-[var(--color-primary)]'
-                }`}
-              />
-              <span
-                className={`block w-6 h-[1.5px] transition-all duration-300 ${
-                  menuOpen ? 'bg-white -rotate-45 -translate-y-[3.5px]' : 'bg-[var(--color-primary)]'
-                }`}
-              />
+          <div className="header-actions">
+            <Link href="/appointment" className="btn btn-primary btn-sm header-cta-desktop">
+              Book Appointment
+            </Link>
+            <a href={tel} className="menu-toggle" aria-label="Call the clinic" style={{ color: 'var(--accent)' }}>
+              <Phone size={22} />
+            </a>
+            <button className="menu-toggle" onClick={() => setOpen(true)} aria-label="Open menu" aria-expanded={open}>
+              <Menu size={26} />
             </button>
           </div>
         </div>
       </header>
 
-      {/* Mobile Menu */}
-      <MobileMenu isOpen={menuOpen} onClose={() => setMenuOpen(false)} />
+      {open && (
+        <>
+          <div className="drawer-backdrop" onClick={() => setOpen(false)} />
+          <aside className="drawer" role="dialog" aria-modal="true" aria-label="Menu">
+            <div className="drawer-top">
+              <ClinicLogo onClick={() => setOpen(false)} />
+              <button className="menu-toggle" onClick={() => setOpen(false)} aria-label="Close menu">
+                <X size={26} />
+              </button>
+            </div>
+            <nav aria-label="Mobile">
+              {navItems.map(item => (
+                <Link key={item.href} href={item.href} className={isActive(item.href) ? 'active' : ''} onClick={() => setOpen(false)}>
+                  {item.label}
+                  <ChevronRight size={18} />
+                </Link>
+              ))}
+            </nav>
+            <div className="drawer-foot">
+              <Link href="/appointment" className="btn btn-primary btn-block" onClick={() => setOpen(false)}>
+                Book Appointment
+              </Link>
+              <a href={tel} className="btn btn-outline btn-block">
+                <Phone size={18} /> {config.contact.phone}
+              </a>
+              <p className="drawer-hours">
+                {config.contact.workingHours.weekdays}<br />
+                {config.contact.workingHours.saturday}<br />
+                {config.contact.workingHours.sunday}
+              </p>
+            </div>
+          </aside>
+        </>
+      )}
     </>
   );
 }

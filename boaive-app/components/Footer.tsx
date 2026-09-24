@@ -1,89 +1,57 @@
-'use client';
-
 import Link from 'next/link';
-import { useTheme } from '@/context/ThemeContext';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import ClinicLogo from '@/components/ClinicLogo';
+import { defaultConfig as config } from '@/config/site-config';
+import { InstagramIcon, FacebookIcon, YoutubeIcon } from '@/components/SocialIcons';
 
 export default function Footer() {
-  const { config } = useTheme();
-
+  const { contact, social } = config;
   return (
-    <footer className="bg-[var(--color-foreground)] text-[#e5e5e5] relative overflow-hidden pt-14 md:pt-16 lg:pt-20 pb-8 md:pb-10">
-      <div className="container-main">
-        {/* Main Columns Grid - Generous vertical space */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 lg:gap-10 pb-12 md:pb-16 border-b border-white/10 items-start">
-          
-          {/* Column 1: Brand & Philosophy */}
-          <div className="flex flex-col justify-between md:col-span-5 pr-6">
-            <div>
-              <Link href="/" className="inline-block">
-                <ClinicLogo clinicName={config.clinicName} variant="light" size="lg" />
-              </Link>
-              <p className="font-display text-sm md:text-base text-[#d4d4d4] mt-4 max-w-sm leading-relaxed">
-                Modern dentistry, hair restoration, and clinical dermatology unified.
-              </p>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <ClinicLogo light />
+            <p>Dental, hair and skin care under one roof — with experienced doctors and honest advice.</p>
+            <div className="footer-social">
+              <a href={social.instagram} aria-label="Instagram" target="_blank" rel="noopener noreferrer"><InstagramIcon size={18} /></a>
+              <a href={social.facebook} aria-label="Facebook" target="_blank" rel="noopener noreferrer"><FacebookIcon size={18} /></a>
+              <a href={social.youtube} aria-label="YouTube" target="_blank" rel="noopener noreferrer"><YoutubeIcon size={18} /></a>
             </div>
-            <p className="font-body text-[10px] tracking-[0.2em] uppercase text-[#a3a3a3] mt-7 md:mt-10">
-              SPECIALIST CLINIC - CHENNAI
-            </p>
           </div>
 
-          {/* Right Columns Container - Generous space above so text is never on top of margin */}
-          <div className="md:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 md:gap-8 pt-8 sm:pt-10 md:pt-12">
-            {/* Column 2: Navigation Links */}
-            <div>
-              <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-3 font-semibold">MENU</span>
-              <ul className="space-y-2.5 text-xs md:text-sm font-medium text-[#d4d4d4]">
-                <li><Link href="/" className="hover:text-white transition-colors block">Home</Link></li>
-                <li><Link href="/services" className="hover:text-white transition-colors block">Our Services</Link></li>
-                <li><Link href="/about" className="hover:text-white transition-colors block">Doctors & Team</Link></li>
-                <li><Link href="/results" className="hover:text-white transition-colors block">Results</Link></li>
-                <li><Link href="/visit" className="hover:text-white transition-colors block">Contact</Link></li>
-              </ul>
-            </div>
+          <div>
+            <h4>Treatments</h4>
+            <ul>
+              {config.services.map(s => (
+                <li key={s.id}><Link href={`/services#${s.slug}`}>{s.name}</Link></li>
+              ))}
+              <li><Link href="/results">Patient results</Link></li>
+            </ul>
+          </div>
 
-            {/* Column 3: Contact */}
-            <div>
-              <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-3 font-semibold">CONNECT</span>
-              <ul className="space-y-2.5 text-xs md:text-sm font-medium text-[#d4d4d4]">
-                <li>
-                  <a href={`tel:${config.contact.phone.replace(/\s/g, '')}`} className="hover:text-white transition-colors block">
-                    {config.contact.phone}
-                  </a>
-                </li>
-                <li>
-                  <a href={`mailto:${config.contact.email}`} className="hover:text-white transition-colors block">
-                    {config.contact.email}
-                  </a>
-                </li>
-                <li>
-                  <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors block">
-                    @boaiveclinic
-                  </a>
-                </li>
-              </ul>
-            </div>
+          <div>
+            <h4>Clinic</h4>
+            <ul>
+              <li><Link href="/about">About &amp; doctors</Link></li>
+              <li><Link href="/appointment">Book appointment</Link></li>
+              <li><Link href="/visit">Find us</Link></li>
+            </ul>
+          </div>
 
-            {/* Column 4: Hours */}
-            <div>
-              <div className="space-y-3 text-xs md:text-sm font-medium text-[#d4d4d4]">
-                <div>
-                  <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-1">WEEKDAYS</span>
-                  <span className="text-[#f5f5f5]">{config.contact.workingHours.weekdays}</span>
-                </div>
-                <div>
-                  <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-1">SATURDAY</span>
-                  <span className="text-[#f5f5f5]">{config.contact.workingHours.saturday}</span>
-                </div>
-              </div>
-            </div>
+          <div>
+            <h4>Contact</h4>
+            <ul>
+              <li style={{ display: 'flex', gap: 10 }}><MapPin size={17} style={{ flexShrink: 0, marginTop: 4 }} />{contact.address}</li>
+              <li style={{ display: 'flex', gap: 10 }}><Phone size={17} style={{ flexShrink: 0, marginTop: 4 }} /><a href={`tel:${contact.phone.replace(/\s/g, '')}`}>{contact.phone}</a></li>
+              <li style={{ display: 'flex', gap: 10 }}><Mail size={17} style={{ flexShrink: 0, marginTop: 4 }} /><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            </ul>
           </div>
         </div>
 
-        {/* Bottom Bar - Balanced and clear */}
-        <div className="py-6 md:py-8 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] font-normal text-[#888]">
-          <p>© {new Date().getFullYear()} {config.clinicName.toUpperCase()}. All rights reserved.</p>
-          <p className="md:text-right">{config.contact.address}</p>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Boaive Clinic. All rights reserved.</span>
+          <span>{contact.workingHours.weekdays} · {contact.workingHours.saturday}</span>
         </div>
       </div>
     </footer>

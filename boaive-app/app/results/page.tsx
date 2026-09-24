@@ -1,45 +1,33 @@
 import BeforeAfter from '@/components/BeforeAfter';
+import Reviews from '@/components/Reviews';
+import CtaBand from '@/components/CtaBand';
+import { clinicStats } from '@/config/site-config';
 
-const stats = [
-  { value: '3,000+', label: 'Patients Treated' },
-  { value: '15+', label: 'Years Combined Experience' },
-  { value: '98%', label: 'Patient Satisfaction' },
-  { value: '3', label: 'Specialties Under One Roof' },
-];
+export const metadata = { title: 'Patient Results — Boaive Clinic' };
 
 export default function ResultsPage() {
   return (
-    <div style={{ paddingTop: 'calc(var(--header-height) + 36px)' }}>
-      <section className="section-padding pb-0">
-        <div className="container-main">
-          <p className="text-eyebrow mb-4">RESULTS</p>
-          <h1 className="heading-hero max-w-3xl">
-            Real outcomes, honestly shown.
-          </h1>
-          <p className="text-body-lg mt-6 max-w-xl">
-            A look at the outcomes our dental, hair and skin patients have achieved — drag the slider to compare before and after.
-          </p>
-        </div>
-      </section>
-
-      <BeforeAfter />
-
-      <section className="pb-16 md:pb-24">
-        <div className="container-main">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 pt-10 border-t border-[var(--color-border)]">
-            {stats.map((stat) => (
-              <div key={stat.label} className="text-center md:text-left">
-                <p className="font-display text-3xl sm:text-4xl font-semibold text-[var(--color-primary)]">
-                  {stat.value}
-                </p>
-                <p className="text-xs sm:text-sm text-[var(--color-secondary)] mt-1.5">
-                  {stat.label}
-                </p>
+    <>
+      <section className="page-intro">
+        <div className="container">
+          <div className="section-head" style={{ marginBottom: 0 }}>
+            <p className="eyebrow">Patient results</p>
+            <h1 className="h1">Real outcomes, honestly shown.</h1>
+            <p className="lead">A look at what our dental, hair and skin patients have achieved.</p>
+          </div>
+          <div className="stats" style={{ marginTop: 36 }}>
+            {clinicStats.map(s => (
+              <div key={s.label}>
+                <p className="stat-value">{s.value}</p>
+                <p className="stat-label">{s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
-    </div>
+      <BeforeAfter showHeading={false} />
+      <Reviews count={5} />
+      <CtaBand />
+    </>
   );
 }

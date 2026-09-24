@@ -1,25 +1,25 @@
 import Hero from '@/components/Hero';
-import Introduction from '@/components/Introduction';
-import ServiceCards from '@/components/ServiceCards';
-import TreatmentFinder from '@/components/TreatmentFinder';
-import ScrollStory from '@/components/ScrollStory';
+import Treatments from '@/components/Treatments';
+import WhyUs from '@/components/WhyUs';
 import BeforeAfter from '@/components/BeforeAfter';
 import DoctorSection from '@/components/DoctorSection';
-import ReviewCarousel from '@/components/ReviewCarousel';
-import Gallery from '@/components/Gallery';
+import Reviews from '@/components/Reviews';
+import ClinicPhotos from '@/components/ClinicPhotos';
+import Faq from '@/components/Faq';
+import CtaBand from '@/components/CtaBand';
 
 export default function HomePage() {
   return (
     <>
       <Hero />
-      <Introduction />
-      <ServiceCards />
-      <TreatmentFinder />
-      <ScrollStory />
+      <Treatments />
+      <WhyUs />
       <BeforeAfter />
       <DoctorSection />
-      <ReviewCarousel />
-      <Gallery />
+      <Reviews />
+      <ClinicPhotos />
+      <Faq />
+      <CtaBand />
     </>
   );
 }

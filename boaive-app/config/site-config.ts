@@ -68,35 +68,6 @@ export interface HeroContent {
   image: string;
 }
 
-export interface ColorPalette {
-  id: string;
-  name: string;
-  background: string;
-  foreground: string;
-  primary: string;
-  secondary: string;
-  accent: string;
-  accentRgb: string;
-  accentForeground: string;
-  muted: string;
-  mutedForeground: string;
-  border: string;
-  card: string;
-}
-
-export interface TypographyPreset {
-  id: string;
-  name: string;
-  displayFont: string;
-  bodyFont: string;
-}
-
-export interface AnimationPreset {
-  id: string;
-  name: string;
-  description: string;
-}
-
 export interface SiteConfig {
   clinicName: string;
   tagline: string;
@@ -107,111 +78,8 @@ export interface SiteConfig {
   doctors: Doctor[];
   contact: ContactInfo;
   social: SocialLinks;
-  colorPalette: string;
-  typographyPreset: string;
-  animationPreset: string;
   appointmentMethod: 'whatsapp' | 'phone' | 'both';
 }
-
-// ============================================================
-// COLOR PALETTES
-// A curated set of clinic-appropriate palettes — all light,
-// trustworthy, and legible first. No dark/glass/novelty themes;
-// every option here is safe to put in front of a real patient.
-// ============================================================
-
-export const colorPalettes: ColorPalette[] = [
-  {
-    id: 'clinical',
-    name: 'Clinical Teal',
-    background: '#FFFFFF',
-    foreground: '#152229',
-    primary: '#152229',
-    secondary: '#5B6B72',
-    accent: '#0F7A76',
-    accentRgb: '15, 122, 118',
-    accentForeground: '#FFFFFF',
-    muted: '#F2F6F6',
-    mutedForeground: '#8A9AA0',
-    border: '#E3E9EA',
-    card: '#FFFFFF',
-  },
-  {
-    id: 'slate',
-    name: 'Slate Blue',
-    background: '#FFFFFF',
-    foreground: '#1B2430',
-    primary: '#1B2430',
-    secondary: '#5C6B7A',
-    accent: '#2F6690',
-    accentRgb: '47, 102, 144',
-    accentForeground: '#FFFFFF',
-    muted: '#F1F5F8',
-    mutedForeground: '#8D9AA6',
-    border: '#E4E9EE',
-    card: '#FFFFFF',
-  },
-  {
-    id: 'sage',
-    name: 'Soft Sage',
-    background: '#FCFDFB',
-    foreground: '#20291F',
-    primary: '#20291F',
-    secondary: '#5E6B58',
-    accent: '#4C7C59',
-    accentRgb: '76, 124, 89',
-    accentForeground: '#FFFFFF',
-    muted: '#F0F4EE',
-    mutedForeground: '#93A08C',
-    border: '#E4EAE0',
-    card: '#FFFFFF',
-  },
-  {
-    id: 'sand',
-    name: 'Warm Sand',
-    background: '#FDFBF8',
-    foreground: '#2B2521',
-    primary: '#2B2521',
-    secondary: '#75695E',
-    accent: '#B5652E',
-    accentRgb: '181, 101, 46',
-    accentForeground: '#FFFFFF',
-    muted: '#F5EFE7',
-    mutedForeground: '#A79A8C',
-    border: '#E9DFD3',
-    card: '#FFFFFF',
-  },
-];
-
-// ============================================================
-// TYPOGRAPHY PRESETS
-// Both pairings are clean, highly legible sans body copy;
-// they differ only in how restrained or warm the headings feel.
-// ============================================================
-
-export const typographyPresets: TypographyPreset[] = [
-  {
-    id: 'modern',
-    name: 'Modern Clinical',
-    displayFont: 'Plus Jakarta Sans',
-    bodyFont: 'Inter',
-  },
-  {
-    id: 'classic',
-    name: 'Classic Serif',
-    displayFont: 'Lora',
-    bodyFont: 'Inter',
-  },
-];
-
-// ============================================================
-// ANIMATION PRESETS
-// ============================================================
-
-export const animationPresets: AnimationPreset[] = [
-  { id: 'smooth', name: 'Smooth', description: 'Polished, subtle transitions and reveals' },
-  { id: 'minimal', name: 'Minimal', description: 'Clean, immediate motion without delay' },
-];
 
 // ============================================================
 // DEFAULT SITE CONFIGURATION
@@ -224,12 +92,12 @@ export const defaultConfig: SiteConfig = {
   logoWordmark: '/images/logo-wordmark.png',
 
   hero: {
-    eyebrow: 'CARE, REFINED.',
-    headline: ['Your skin.', 'Your smile.', 'Your confidence.'],
-    description: 'Advanced dental, hair and skin care designed around you.',
+    eyebrow: 'Dental · Hair · Skin Clinic',
+    headline: ['Caring for your smile, hair and skin.'],
+    description: 'One neighbourhood clinic for dental, hair and skin care. Experienced doctors, clear advice and fair pricing — with no unnecessary procedures.',
     primaryCta: 'Book Appointment',
-    secondaryCta: 'Explore Services',
-    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80',
+    secondaryCta: 'Our Treatments',
+    image: 'https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&w=1200&q=80',
   },
 
   services: [
@@ -326,9 +194,9 @@ export const defaultConfig: SiteConfig = {
   ],
 
   contact: {
-    phone: '+91 99999 99999',
-    whatsapp: '919999999999',
-    email: 'hello@boaiveclinic.com',
+    phone: '+91 81108 23730',
+    whatsapp: '91 81108 23730',
+    email: 'boaive.tech@gmail.com',
     address: 'MDS Complex, City Union Bank building, Mahalingapuram, Chennai 600034',
     landmark: 'Opposite to Ayyappan Temple',
     city: 'Chennai',
@@ -342,14 +210,11 @@ export const defaultConfig: SiteConfig = {
   },
 
   social: {
-    instagram: 'https://instagram.com/boaiveclinic',
-    facebook: 'https://facebook.com/boaiveclinic',
-    youtube: 'https://youtube.com/@boaiveclinic',
+    instagram: 'https://instagram.com/boaive',
+    facebook: 'https://facebook.com/boaive',
+    youtube: 'https://youtube.com/@boaive',
   },
 
-  colorPalette: 'clinical',
-  typographyPreset: 'modern',
-  animationPreset: 'smooth',
   appointmentMethod: 'both',
 };
 
@@ -413,38 +278,32 @@ export const galleryImages = [
 ];
 
 // ============================================================
-// SCROLL STORY STEPS
+// HOME PAGE CONTENT
 // ============================================================
 
-export const scrollStorySteps = [
-  {
-    number: '01',
-    title: 'Personalized Care',
-    description: 'Every treatment plan is designed around your unique needs, preferences, and goals.',
-    image: 'https://images.unsplash.com/photo-1581056771107-24ca5f033842?w=800&q=80',
-  },
-  {
-    number: '02',
-    title: 'Modern Technology',
-    description: 'We use the latest equipment and techniques for precise, comfortable treatments.',
-    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=800&q=80',
-  },
-  {
-    number: '03',
-    title: 'Experienced Doctors',
-    description: 'Our team brings decades of expertise across dental, dermatology, and trichology.',
-    image: 'https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=800&q=80',
-  },
-  {
-    number: '04',
-    title: 'Patient-First Experience',
-    description: 'From your first visit to follow-up, every interaction is designed around your comfort.',
-    image: 'https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?w=800&q=80',
-  },
-  {
-    number: '05',
-    title: 'Transparent Guidance',
-    description: 'Honest advice, clear explanations, and no unnecessary procedures — ever.',
-    image: 'https://images.unsplash.com/photo-1622253692010-333f2da6031d?w=800&q=80',
-  },
+export const clinicStats = [
+  { value: '3,000+', label: 'Patients treated' },
+  { value: '15+', label: 'Years of combined experience' },
+  { value: '3', label: 'Specialties, one clinic' },
+  { value: '4.9', label: 'Average patient rating' },
+];
+
+export const whyUs = [
+  { title: 'Experienced doctors', description: 'Qualified specialists in dentistry, dermatology and trichology — you see the doctor, not a trainee.' },
+  { title: 'Honest advice', description: 'We explain your options and costs up front, and only recommend what you actually need.' },
+  { title: 'Clean and comfortable', description: 'Modern equipment, strict sterilisation and a calm clinic where children and seniors feel at ease.' },
+  { title: 'Fair, clear pricing', description: 'Consultation fees and treatment estimates are shared before anything begins.' },
+];
+
+export const faqs = [
+  { q: 'Do I need an appointment?', a: 'Appointments are recommended so you are not kept waiting, but we do accept walk-ins when a slot is free.' },
+  { q: 'What happens at the first visit?', a: 'The doctor listens to your concern, examines you, explains the diagnosis and options, and shares an estimate before any treatment.' },
+  { q: 'Are the treatments painful?', a: 'We use modern anaesthesia, gentle techniques and topical numbing so most treatments are comfortable. Your doctor will explain what to expect.' },
+  { q: 'Can I get dental, skin and hair care in one visit?', a: 'Yes. All three departments are in the same clinic, so you can be seen by more than one specialist in a single trip.' },
+];
+
+export const resultCases = [
+  { id: 'dental', category: 'Dental', title: 'Closing a gap and brightening the smile', treatment: 'Porcelain veneers and whitening', duration: '2 weeks · 2 visits', before: '/images/dental-before.jpg', after: '/images/dental-after.jpg' },
+  { id: 'hair', category: 'Hair', title: 'Restoring density at the crown', treatment: 'PRP therapy', duration: '16 weeks · 4 sessions', before: '/images/hair-before.jpg', after: '/images/hair-after.jpg' },
+  { id: 'skin', category: 'Skin', title: 'Clearer, more even skin', treatment: 'Peels and resurfacing', duration: '6 weeks · 3 sessions', before: '/images/skin-before.jpg', after: '/images/skin-after.jpg' },
 ];
