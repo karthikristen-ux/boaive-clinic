@@ -23,12 +23,12 @@ export default function VisitPage() {
             Conveniently located for you.
           </p>
 
-          <div className="flex flex-col gap-7 mb-6">
-            
+          <div className="flex flex-col gap-6 mb-8">
+
             {/* Address */}
-            <div className="flex gap-4 sm:gap-6 items-start">
-              <div className="text-[var(--color-primary)] mt-1">
-                <MapPin size={24} strokeWidth={2} className="opacity-80" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
+                <MapPin size={20} strokeWidth={2} />
               </div>
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Address</h3>
@@ -39,9 +39,9 @@ export default function VisitPage() {
             </div>
 
             {/* Landmark */}
-            <div className="flex gap-4 sm:gap-6 items-start">
-              <div className="text-[var(--color-primary)] mt-1">
-                <Users size={24} strokeWidth={2} className="opacity-80" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
+                <Users size={20} strokeWidth={2} />
               </div>
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Landmark</h3>
@@ -52,9 +52,9 @@ export default function VisitPage() {
             </div>
 
             {/* Phone */}
-            <div className="flex gap-4 sm:gap-6 items-start">
-              <div className="text-[var(--color-primary)] mt-1">
-                <Phone size={24} strokeWidth={2} className="opacity-80" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
+                <Phone size={20} strokeWidth={2} />
               </div>
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Phone</h3>
@@ -65,9 +65,9 @@ export default function VisitPage() {
             </div>
 
             {/* Email */}
-            <div className="flex gap-4 sm:gap-6 items-start">
-              <div className="text-[var(--color-primary)] mt-1">
-                <Mail size={24} strokeWidth={2} className="opacity-80" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
+                <Mail size={20} strokeWidth={2} />
               </div>
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Email</h3>
@@ -78,9 +78,9 @@ export default function VisitPage() {
             </div>
 
             {/* Working Hours */}
-            <div className="flex gap-4 sm:gap-6 items-start">
-              <div className="text-[var(--color-primary)] mt-1">
-                <Clock size={24} strokeWidth={2} className="opacity-80" />
+            <div className="flex gap-4 sm:gap-5 items-start">
+              <div className="w-11 h-11 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
+                <Clock size={20} strokeWidth={2} />
               </div>
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Working Hours</h3>
@@ -91,25 +91,22 @@ export default function VisitPage() {
                 </p>
               </div>
             </div>
-            
+
           </div>
 
-          {/* Separated Google Maps Button with proper margin and top border divider */}
-          <div className="mt-6 sm:mt-8 pt-6 border-t border-[var(--color-border)]">
-            <a 
-              href={config.contact.mapUrl} 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="btn-primary inline-flex w-full sm:w-auto justify-center text-center !py-3.5 !px-8"
-            >
-               <span className="font-body text-sm font-semibold tracking-wide">Open in Google Maps</span>
-               <ArrowRight size={16} />
-            </a>
-          </div>
+          <a
+            href={config.contact.mapUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex w-full sm:w-auto justify-center text-center"
+          >
+             <span>Open in Google Maps</span>
+             <ArrowRight size={16} />
+          </a>
         </div>
 
         {/* Right Column: Map */}
-        <div className="w-full h-[350px] lg:h-[450px] rounded-none overflow-hidden relative shadow-inner">
+        <div className="w-full h-[350px] lg:h-[450px] media-frame relative shadow-[var(--shadow-lg)]">
           <iframe
             src={config.contact.mapEmbed}
             width="100%"

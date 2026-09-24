@@ -10,7 +10,7 @@ export default function ScrollStory() {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section ref={sectionRef} className="section-padding bg-[var(--color-background)] border-t border-[var(--color-border)] relative z-10">
+    <section ref={sectionRef} className="section-padding relative z-10">
       <div className="container-main">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -35,8 +35,8 @@ export default function ScrollStory() {
                 }`}
                 onClick={() => setActiveStep(i)}
               >
-                <span className="font-display text-3xl lg:text-4xl font-normal text-[var(--color-primary)] shrink-0 w-12">
-                  0{step.number}
+                <span className="font-display text-3xl lg:text-4xl font-normal text-[var(--color-accent)] shrink-0 w-12">
+                  {step.number}
                 </span>
                 <div>
                   <h3 className="font-body font-semibold text-lg lg:text-xl mb-1 text-[var(--color-primary)]">
@@ -53,7 +53,7 @@ export default function ScrollStory() {
           </div>
 
           {/* Right — Image */}
-          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] overflow-hidden bg-[var(--color-muted)] border border-[var(--color-border)] shadow-sm">
+          <div className="relative aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/3] media-frame bg-[var(--color-muted)] shadow-[var(--shadow-lg)]">
             {scrollStorySteps.map((step, i) => (
               <img
                 key={step.number}

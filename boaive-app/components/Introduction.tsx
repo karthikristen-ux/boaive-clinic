@@ -42,10 +42,10 @@ export default function Introduction() {
 
           {/* Image */}
           <motion.div
-            initial={{ clipPath: 'inset(0 0 100% 0)' }}
-            animate={isInView ? { clipPath: 'inset(0 0 0% 0)' } : {}}
+            initial={{ clipPath: 'inset(0 0 100% 0 round 26px)' }}
+            animate={isInView ? { clipPath: 'inset(0 0 0% 0 round 26px)' } : {}}
             transition={{ delay: 0.2, duration: 1, ease: [0.77, 0, 0.175, 1] }}
-            className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden"
+            className="relative aspect-[4/5] lg:aspect-[3/4] shadow-[var(--shadow-lg)]"
           >
             <img
               src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=800"

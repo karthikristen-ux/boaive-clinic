@@ -78,6 +78,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     root.style.setProperty('--color-primary', palette.primary);
     root.style.setProperty('--color-secondary', palette.secondary);
     root.style.setProperty('--color-accent', palette.accent);
+    root.style.setProperty('--color-accent-rgb', palette.accentRgb);
     root.style.setProperty('--color-accent-foreground', palette.accentForeground);
     root.style.setProperty('--color-muted', palette.muted);
     root.style.setProperty('--color-muted-foreground', palette.mutedForeground);

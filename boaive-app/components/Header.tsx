@@ -81,10 +81,10 @@ export default function Header() {
             <div className="hidden lg:block">
               <Link
                 href="/appointment"
-                className="btn-primary !py-2.5 !px-5 !text-[10px] !tracking-[0.1em] !font-medium !rounded-none"
+                className="btn-primary !py-2.5 !px-5 !text-[11px]"
               >
                 <span>Book Appointment</span>
-                <ArrowRight size={14} className="opacity-70" />
+                <ArrowRight size={14} className="opacity-90" />
               </Link>
             </div>
             

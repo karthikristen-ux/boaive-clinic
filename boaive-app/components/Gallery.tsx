@@ -10,7 +10,7 @@ export default function Gallery() {
   const [activeImage, setActiveImage] = useState(0);
 
   return (
-    <section ref={ref} className="section-padding bg-[var(--color-muted)]">
+    <section ref={ref} className="section-padding">
       <div className="container-main">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -33,10 +33,10 @@ export default function Gallery() {
               <button
                 key={img.id}
                 onClick={() => setActiveImage(i)}
-                className={`px-5 py-2 text-[10px] font-bold tracking-[0.1em] uppercase whitespace-nowrap transition-all duration-300 rounded-none border ${
+                className={`px-5 py-2 rounded-full text-[10px] font-bold tracking-[0.1em] uppercase whitespace-nowrap transition-all duration-300 ${
                   activeImage === i
-                    ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                    : 'bg-[var(--color-card)] text-[var(--color-secondary)] border-transparent hover:border-[var(--color-border)]'
+                    ? 'bg-[var(--color-accent)] text-white shadow-[var(--shadow-accent)]'
+                    : 'bg-[var(--color-muted)] text-[var(--color-secondary)] hover:text-[var(--color-primary)]'
                 }`}
               >
                 {img.category}
@@ -45,7 +45,7 @@ export default function Gallery() {
           </div>
 
           {/* Main image */}
-          <div className="relative aspect-[16/9] overflow-hidden mb-4">
+          <div className="relative aspect-[16/9] media-frame mb-4 shadow-[var(--shadow-lg)]">
             {galleryImages.map((img, i) => (
               <img
                 key={img.id}
@@ -65,8 +65,8 @@ export default function Gallery() {
               <button
                 key={img.id}
                 onClick={() => setActiveImage(i)}
-                className={`relative aspect-[4/3] overflow-hidden transition-all duration-300 ${
-                  activeImage === i ? 'ring-2 ring-[var(--color-primary)] ring-offset-2' : 'opacity-60 hover:opacity-100'
+                className={`relative aspect-[4/3] rounded-[var(--radius-sm)] overflow-hidden transition-all duration-300 ${
+                  activeImage === i ? 'ring-2 ring-[var(--color-accent)] ring-offset-2' : 'opacity-60 hover:opacity-100'
                 }`}
               >
                 <img
@@ -85,8 +85,8 @@ export default function Gallery() {
               <button
                 key={img.id}
                 onClick={() => setActiveImage(i)}
-                className={`carousel-card w-24 aspect-[4/3] overflow-hidden transition-all duration-300 shrink-0 ${
-                  activeImage === i ? 'ring-2 ring-[var(--color-primary)]' : 'opacity-60'
+                className={`carousel-card w-24 aspect-[4/3] rounded-[var(--radius-sm)] overflow-hidden transition-all duration-300 shrink-0 ${
+                  activeImage === i ? 'ring-2 ring-[var(--color-accent)]' : 'opacity-60'
                 }`}
               >
                 <img

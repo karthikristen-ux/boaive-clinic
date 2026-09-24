@@ -14,7 +14,7 @@ export default function DoctorSection() {
   const doctor = config.doctors.find(d => d.id === selectedDoctor);
 
   return (
-    <section ref={ref} className="section-padding bg-[var(--color-muted)]">
+    <section ref={ref} className="section-padding">
       <div className="container-main">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,7 +38,7 @@ export default function DoctorSection() {
               className="group cursor-pointer"
               onClick={() => setSelectedDoctor(doc.id)}
             >
-              <div className="relative aspect-[3/4] overflow-hidden mb-6">
+              <div className="relative aspect-[3/4] media-frame mb-6 shadow-[var(--shadow-sm)] transition-shadow duration-500 group-hover:shadow-[var(--shadow-lg)]">
                 <img
                   src={doc.photo}
                   alt={doc.name}
@@ -92,13 +92,13 @@ export default function DoctorSection() {
               <div className="p-6 lg:p-10">
                 <button
                   onClick={() => setSelectedDoctor(null)}
-                  className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-muted)] transition-colors"
+                  className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center bg-[var(--color-muted)] hover:bg-[var(--color-border)] transition-colors"
                   aria-label="Close profile"
                 >
                   <X size={18} />
                 </button>
 
-                <div className="aspect-[3/4] overflow-hidden mb-8 mt-8">
+                <div className="aspect-[3/4] media-frame shadow-[var(--shadow-md)] mb-8 mt-8">
                   <img
                     src={doctor.photo}
                     alt={doctor.name}
@@ -122,7 +122,7 @@ export default function DoctorSection() {
                     </h4>
                     <div className="flex flex-wrap gap-2">
                       {doctor.expertise.map((e) => (
-                        <span key={e} className="px-3 py-1.5 text-xs bg-[var(--color-muted)] text-[var(--color-secondary)]">
+                        <span key={e} className="px-3 py-1.5 rounded-full text-xs bg-[var(--color-muted)] text-[var(--color-secondary)]">
                           {e}
                         </span>
                       ))}

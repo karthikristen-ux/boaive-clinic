@@ -25,7 +25,7 @@ export default function TreatmentFinder() {
   if (!activeService) return null;
 
   return (
-    <section ref={ref} className="section-padding bg-[var(--color-background)]">
+    <section ref={ref} className="section-padding section-alt">
       <div className="container-main">
         {/* Header & Tabs */}
         <div className="flex flex-col gap-8 mb-14">
@@ -46,7 +46,7 @@ export default function TreatmentFinder() {
             initial={{ opacity: 0, y: 15 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.5 }}
-            className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide"
+            className="flex gap-3 overflow-x-auto pb-2 scrollbar-hide"
           >
             {enabledServices.map((service) => {
               const isActive = resolvedTab === service.id;
@@ -54,10 +54,10 @@ export default function TreatmentFinder() {
                 <button
                   key={service.id}
                   onClick={() => setActiveTab(service.id)}
-                  className={`flex items-center gap-2 py-3 px-6 transition-all duration-300 border whitespace-nowrap shrink-0 ${
+                  className={`flex items-center gap-2 py-3 px-6 rounded-full transition-all duration-300 whitespace-nowrap shrink-0 ${
                     isActive
-                      ? 'bg-[var(--color-primary)] text-[var(--color-background)] border-[var(--color-primary)]'
-                      : 'bg-[var(--color-card)] text-[var(--color-secondary)] border-[var(--color-border)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]'
+                      ? 'bg-[var(--color-accent)] text-[var(--color-accent-foreground)] shadow-[var(--shadow-accent)]'
+                      : 'bg-[var(--color-card)] text-[var(--color-secondary)] shadow-[var(--shadow-sm)] hover:text-[var(--color-primary)]'
                   }`}
                 >
                   {iconMap[service.id]}
@@ -90,31 +90,23 @@ export default function TreatmentFinder() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.06, duration: 0.4 }}
-                  className="group flex flex-col justify-between p-6 border border-[var(--color-border)] bg-[var(--color-card)] hover:border-[var(--color-primary)] hover:shadow-xl transition-all duration-300 relative overflow-hidden h-full rounded-none"
+                  className="card card-hover group flex flex-col h-full overflow-hidden"
                 >
-                  <div>
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="font-display text-sm font-bold tracking-wider text-[var(--color-secondary)]">
-                        {String(index + 1).padStart(2, '0')}
-                      </span>
-                    </div>
-                    <h3 className="font-body font-semibold text-lg lg:text-xl text-[var(--color-primary)] leading-snug mb-3">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[var(--color-muted)]">
+                    <img
+                      src={treatment.image}
+                      alt={treatment.name}
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  </div>
+                  <div className="p-5 flex flex-col flex-1">
+                    <h3 className="font-body font-semibold text-base lg:text-lg text-[var(--color-primary)] leading-snug mb-2">
                       {treatment.name}
                     </h3>
-                    <p className="font-body text-xs sm:text-[13px] text-[var(--color-secondary)] leading-relaxed mb-6">
+                    <p className="font-body text-[13px] text-[var(--color-secondary)] leading-relaxed">
                       {treatment.description}
                     </p>
-                  </div>
-
-                  <div className="mt-auto">
-                    <div className="relative aspect-square w-full overflow-hidden bg-[var(--color-muted)]/40 group-hover:scale-[1.02] transition-transform duration-300 rounded-none">
-                      <img
-                        src={treatment.image}
-                        alt={treatment.name}
-                        className="w-full h-full object-cover object-center"
-                        loading="lazy"
-                      />
-                    </div>
                   </div>
                 </motion.div>
               </Link>

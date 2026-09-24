@@ -18,7 +18,7 @@ export default function AboutPage() {
                 We believe great healthcare is personal. That&apos;s why we bring together dental, hair, and skin specialists under one roof — so your care is connected, consistent, and built entirely around you.
               </p>
             </div>
-            <div className="relative aspect-[4/5] overflow-hidden">
+            <div className="relative aspect-[4/5] media-frame shadow-[var(--shadow-lg)]">
               <img
                 src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?auto=format&fit=crop&q=80&w=800"
                 alt="Boaive Clinic interior"

@@ -30,7 +30,7 @@ export default function ServiceCards() {
         </motion.div>
 
         {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           {enabledServices.map((service, i) => (
             <motion.div
               key={service.id}
@@ -39,27 +39,27 @@ export default function ServiceCards() {
               transition={{ delay: 0.15 * i, duration: 0.7 }}
             >
               <Link href={`/services#${service.slug}`} className="group block">
-                <div className="relative aspect-square overflow-hidden mb-6">
+                <div className="relative aspect-[4/5] media-frame mb-6 shadow-[var(--shadow-sm)] transition-shadow duration-500 group-hover:shadow-[var(--shadow-lg)]">
                   <img
                     src={service.image}
                     alt={service.name}
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
+                  <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
+                    <h3 className="font-display text-xl lg:text-2xl font-semibold text-white">
+                      {service.name}
+                    </h3>
+                    <span className="w-10 h-10 rounded-full bg-white/95 flex items-center justify-center text-[var(--color-primary)] shrink-0 transition-transform duration-300 group-hover:translate-x-1 group-hover:bg-[var(--color-accent)] group-hover:text-white">
+                      <ArrowRight size={16} />
+                    </span>
+                  </div>
                 </div>
-                
-                <h3 className="font-display text-2xl lg:text-[1.75rem] font-medium mb-3 text-[var(--color-primary)]">
-                  {service.name}
-                </h3>
-                <p className="text-sm text-[var(--color-secondary)] max-w-[280px] mb-4">
+
+                <p className="text-sm text-[var(--color-secondary)] max-w-[300px] leading-relaxed">
                   {service.description}
                 </p>
-                
-                <div className="flex items-center gap-2 text-xs font-semibold tracking-[0.1em] uppercase text-[var(--color-primary)] group-hover:text-[var(--color-secondary)] transition-colors">
-                  Explore
-                  <ArrowRight size={14} className="transition-transform duration-300 group-hover:translate-x-1" />
-                </div>
               </Link>
             </motion.div>
           ))}

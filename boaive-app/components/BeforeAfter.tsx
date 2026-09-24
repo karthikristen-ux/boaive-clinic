@@ -158,7 +158,7 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
   const activeCase = caseStudies[activeCategory];
 
   return (
-    <section ref={ref} className={`${compact ? 'py-4 sm:py-6' : 'section-padding'} bg-[var(--color-muted)]/20`}>
+    <section ref={ref} className={`${compact ? 'py-4 sm:py-6' : 'section-padding'} section-alt`}>
       <div className="container-main">
         {/* Header */}
         <div className={`flex flex-col md:flex-row justify-between items-start md:items-end ${compact ? 'mb-4 sm:mb-6' : 'mb-8 md:mb-12'}`}>
@@ -207,7 +207,7 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
           >
             <div
               ref={sliderRef}
-              className={`ba-slider relative ${compact ? 'h-[280px] sm:h-[340px] md:h-[400px] lg:h-[440px] max-h-[50vh]' : 'h-[340px] sm:h-[420px] md:h-[480px] lg:h-[540px]'} select-none cursor-ew-resize overflow-hidden touch-none`}
+              className={`ba-slider relative media-frame shadow-[var(--shadow-lg)] ${compact ? 'h-[280px] sm:h-[340px] md:h-[400px] lg:h-[440px] max-h-[50vh]' : 'h-[340px] sm:h-[420px] md:h-[480px] lg:h-[540px]'} select-none cursor-ew-resize touch-none`}
               style={{ touchAction: 'none' }}
               onPointerDown={handlePointerDown}
               onPointerMove={handlePointerMove}
@@ -245,10 +245,10 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
               />
 
               {/* Badges */}
-              <div className="absolute bottom-6 left-6 z-10 px-6 py-2 rounded-none bg-white text-[var(--color-primary)] text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase pointer-events-none">
+              <div className="absolute bottom-6 left-6 z-10 px-5 py-2 rounded-full bg-white text-[var(--color-primary)] text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase pointer-events-none shadow-md">
                 Before
               </div>
-              <div className="absolute bottom-6 right-6 z-10 px-6 py-2 rounded-none bg-white text-[var(--color-primary)] text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase pointer-events-none">
+              <div className="absolute bottom-6 right-6 z-10 px-5 py-2 rounded-full bg-white text-[var(--color-primary)] text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase pointer-events-none shadow-md">
                 After
               </div>
 
@@ -259,16 +259,16 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
               >
                 {/* Vertical line */}
                 <div className="w-[1px] h-full bg-white mx-auto" />
-                
+
                 {/* Center Grab Handle Knob */}
-                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-none bg-white shadow-lg flex items-center justify-center text-[var(--color-primary)] transition-transform duration-150 hover:scale-110 active:scale-95">
+                <div className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 w-12 h-12 rounded-full bg-white shadow-lg flex items-center justify-center text-[var(--color-primary)] transition-transform duration-150 hover:scale-110 active:scale-95">
                   <ArrowLeftRight size={16} strokeWidth={2} />
                 </div>
               </div>
             </div>
 
             {/* Clinical Case Details Footer Bar */}
-            <div className={`${compact ? 'py-4 gap-4' : 'py-6 gap-6'} grid grid-cols-1 sm:grid-cols-3 border-b border-[var(--color-border)]`}>
+            <div className={`card ${compact ? 'p-4 gap-4' : 'p-6 gap-6'} mt-6 grid grid-cols-1 sm:grid-cols-3`}>
               <div>
                 <span className="text-[10px] uppercase font-bold text-[var(--color-secondary)] tracking-[0.1em] block mb-2">
                   Treatment

@@ -79,7 +79,7 @@ export default function AppointmentWizard() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', damping: 15 }}
-          className="w-16 h-16 rounded-none bg-[var(--color-accent)] text-white flex items-center justify-center mx-auto mb-8"
+          className="w-16 h-16 rounded-full bg-[var(--color-accent)] text-white flex items-center justify-center mx-auto mb-8 shadow-[var(--shadow-accent)]"
         >
           <Check size={28} />
         </motion.div>
@@ -147,7 +147,7 @@ export default function AppointmentWizard() {
               }`}
             >
               <div className="flex items-center gap-1.5">
-                <span className={`w-5 h-5 rounded-none flex items-center justify-center text-[10px] font-bold ${
+                <span className={`w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
                   isDone ? 'bg-[var(--color-accent)] text-white' :
                   isCurrent ? 'bg-[var(--color-primary)] text-white' :
                   'border border-[var(--color-border)] text-[var(--color-secondary)]'
@@ -194,14 +194,14 @@ export default function AppointmentWizard() {
                       setSelectedTreatment('');
                       setStep(2);
                     }}
-                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 border transition-all duration-300 hover:scale-[1.01] bg-[var(--color-card)] group cursor-pointer text-left ${
+                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 rounded-[var(--radius-md)] transition-all duration-300 group cursor-pointer text-left ${
                       selectedService === service.id
-                        ? 'border-[var(--color-primary)] shadow-md bg-[var(--color-muted)]/20'
-                        : 'border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-sm'
+                        ? 'bg-[var(--color-muted)] shadow-[var(--shadow-sm)] ring-2 ring-[var(--color-accent)]'
+                        : 'bg-[var(--color-card)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)] hover:-translate-y-0.5'
                     }`}
                   >
                     <div className="flex items-center gap-4 sm:gap-5 min-w-0">
-                      <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 bg-[var(--color-muted)]/70 text-[var(--color-primary)] flex items-center justify-center p-3">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full bg-[var(--color-muted)] text-[var(--color-accent)] flex items-center justify-center">
                         {service.id === 'dental' ? <Smile className="w-6 h-6 sm:w-7 sm:h-7" /> :
                          service.id === 'hair' ? <Wind className="w-6 h-6 sm:w-7 sm:h-7" /> :
                          <Sparkles className="w-6 h-6 sm:w-7 sm:h-7" />}
@@ -215,10 +215,10 @@ export default function AppointmentWizard() {
                         </p>
                       </div>
                     </div>
-                    <span className={`px-4 py-2 sm:px-5 sm:py-2.5 border text-[11px] sm:text-xs tracking-[0.1em] font-bold uppercase transition-colors shrink-0 ml-3 ${
+                    <span className={`px-4 py-2 sm:px-5 sm:py-2.5 rounded-full text-[11px] sm:text-xs tracking-[0.1em] font-bold uppercase transition-colors shrink-0 ml-3 ${
                       selectedService === service.id
-                        ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                        : 'bg-transparent text-[var(--color-primary)] border-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white'
+                        ? 'bg-[var(--color-accent)] text-white'
+                        : 'bg-[var(--color-muted)] text-[var(--color-primary)] group-hover:bg-[var(--color-accent)] group-hover:text-white'
                     }`}>
                       Select
                     </span>
@@ -247,20 +247,20 @@ export default function AppointmentWizard() {
                       setSelectedTreatment(treatment.id);
                       setStep(3);
                     }}
-                    className={`w-full flex items-center justify-between p-3.5 sm:p-4 border transition-all duration-300 text-left hover:scale-[1.005] cursor-pointer ${
+                    className={`w-full flex items-center justify-between p-3.5 sm:p-4 rounded-[var(--radius-sm)] transition-all duration-300 text-left cursor-pointer ${
                       selectedTreatment === treatment.id
-                        ? 'border-[var(--color-primary)] bg-[var(--color-muted)]/40 shadow-sm'
-                        : 'border-[var(--color-border)] bg-[var(--color-card)] hover:border-[var(--color-primary)]'
+                        ? 'bg-[var(--color-muted)] shadow-[var(--shadow-sm)] ring-2 ring-[var(--color-accent)]'
+                        : 'bg-[var(--color-card)] shadow-[var(--shadow-sm)] hover:shadow-[var(--shadow-md)]'
                     }`}
                   >
                     <div className="min-w-0 pr-3">
                       <p className="font-body font-semibold text-sm sm:text-base text-[var(--color-foreground)] leading-tight mb-0.5">{treatment.name}</p>
                       <p className="font-body text-[11px] sm:text-xs text-[var(--color-secondary)] line-clamp-1 sm:line-clamp-none">{treatment.description}</p>
                     </div>
-                    <span className={`px-3 py-1.5 border text-[10px] tracking-[0.1em] font-bold uppercase transition-colors shrink-0 ml-2 ${
+                    <span className={`px-3 py-1.5 rounded-full text-[10px] tracking-[0.1em] font-bold uppercase transition-colors shrink-0 ml-2 ${
                       selectedTreatment === treatment.id
-                        ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                        : 'bg-transparent text-[var(--color-primary)] border-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white'
+                        ? 'bg-[var(--color-accent)] text-white'
+                        : 'bg-[var(--color-muted)] text-[var(--color-primary)]'
                     }`}>
                       {selectedTreatment === treatment.id ? 'Selected' : 'Select'}
                     </span>
@@ -281,14 +281,14 @@ export default function AppointmentWizard() {
               </div>
 
               {/* Calendar */}
-              <div className="w-full max-w-sm mx-auto mb-4 bg-[var(--color-card)] p-3 sm:p-4 border border-[var(--color-border)]">
+              <div className="w-full max-w-sm mx-auto mb-4 bg-[var(--color-card)] p-3 sm:p-4 rounded-[var(--radius-md)] shadow-[var(--shadow-sm)]">
                 <div className="flex items-center justify-between mb-3">
                   <button
                     onClick={() => {
                       if (calMonth === 0) { setCalMonth(11); setCalYear(calYear - 1); }
                       else setCalMonth(calMonth - 1);
                     }}
-                    className="w-8 h-8 flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-muted)] cursor-pointer"
+                    className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[var(--color-muted)] cursor-pointer"
                     aria-label="Previous month"
                   >
                     <ArrowLeft size={14} />
@@ -301,7 +301,7 @@ export default function AppointmentWizard() {
                       if (calMonth === 11) { setCalMonth(0); setCalYear(calYear + 1); }
                       else setCalMonth(calMonth + 1);
                     }}
-                    className="w-8 h-8 flex items-center justify-center border border-[var(--color-border)] hover:bg-[var(--color-muted)] cursor-pointer"
+                    className="w-8 h-8 rounded-full flex items-center justify-center hover:bg-[var(--color-muted)] cursor-pointer"
                     aria-label="Next month"
                   >
                     <ArrowRight size={14} />
@@ -334,9 +334,9 @@ export default function AppointmentWizard() {
                         key={day}
                         onClick={() => !isDisabled && setSelectedDate(date)}
                         disabled={isDisabled}
-                        className={`w-8 h-8 sm:w-9 sm:h-9 mx-auto flex items-center justify-center text-xs transition-colors rounded-none ${
-                          isSelected ? 'bg-[var(--color-primary)] text-white font-bold' :
-                          isToday ? 'border border-[var(--color-primary)] text-[var(--color-primary)]' :
+                        className={`w-8 h-8 sm:w-9 sm:h-9 mx-auto flex items-center justify-center text-xs transition-colors rounded-full ${
+                          isSelected ? 'bg-[var(--color-accent)] text-white font-bold' :
+                          isToday ? 'border border-[var(--color-accent)] text-[var(--color-accent)]' :
                           isDisabled ? 'opacity-25 cursor-not-allowed text-[var(--color-secondary)]' :
                           'hover:bg-[var(--color-muted)] text-[var(--color-foreground)] cursor-pointer'
                         }`}
@@ -365,12 +365,12 @@ export default function AppointmentWizard() {
                           key={slot}
                           onClick={() => !isDisabled && setSelectedTime(slot)}
                           disabled={isDisabled}
-                          className={`py-2 px-1 text-xs border transition-colors cursor-pointer ${
+                          className={`py-2 px-1 text-xs rounded-[var(--radius-sm)] transition-colors cursor-pointer ${
                             selectedTime === slot
-                              ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] font-semibold'
+                              ? 'bg-[var(--color-accent)] text-white font-semibold shadow-[var(--shadow-accent)]'
                               : isDisabled
-                              ? 'opacity-30 cursor-not-allowed border-[var(--color-border)]'
-                              : 'bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]'
+                              ? 'opacity-30 cursor-not-allowed bg-[var(--color-muted)]'
+                              : 'bg-[var(--color-muted)] hover:bg-[var(--color-border)]'
                           }`}
                         >
                           {slot}

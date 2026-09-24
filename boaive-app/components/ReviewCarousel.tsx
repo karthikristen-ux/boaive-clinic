@@ -37,7 +37,7 @@ export default function ReviewCarousel() {
   }, [isPaused, scroll]);
 
   return (
-    <section ref={ref} className="section-padding">
+    <section ref={ref} className="section-padding section-alt">
       <div className="container-main">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,14 +52,14 @@ export default function ReviewCarousel() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-[var(--color-card)]"
+              className="w-10 h-10 rounded-full shadow-[var(--shadow-sm)] flex items-center justify-center text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors bg-[var(--color-card)]"
               aria-label="Previous review"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-[var(--color-card)]"
+              className="w-10 h-10 rounded-full shadow-[var(--shadow-sm)] flex items-center justify-center text-[var(--color-secondary)] hover:text-[var(--color-accent)] transition-colors bg-[var(--color-card)]"
               aria-label="Next review"
             >
               <ChevronRight size={16} />
@@ -79,7 +79,7 @@ export default function ReviewCarousel() {
             {[...demoReviews, ...demoReviews].map((review, i) => (
               <div
                 key={`${review.id}-${i}`}
-                className="carousel-card w-[320px] sm:w-[360px] p-8 border border-[var(--color-border)] bg-[var(--color-card)]"
+                className="card carousel-card w-[320px] sm:w-[360px] p-8"
               >
                 {/* Stars */}
                 <div className="star-rating mb-6">

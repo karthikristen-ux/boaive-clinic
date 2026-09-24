@@ -76,6 +76,7 @@ export interface ColorPalette {
   primary: string;
   secondary: string;
   accent: string;
+  accentRgb: string;
   accentForeground: string;
   muted: string;
   mutedForeground: string;
@@ -114,9 +115,9 @@ export interface SiteConfig {
 
 // ============================================================
 // COLOR PALETTES
-// Two clean, clinical palettes suited to a local/mid-size
-// dental, hair and skin practice — trustworthy and legible
-// first, decorative second.
+// A curated set of clinic-appropriate palettes — all light,
+// trustworthy, and legible first. No dark/glass/novelty themes;
+// every option here is safe to put in front of a real patient.
 // ============================================================
 
 export const colorPalettes: ColorPalette[] = [
@@ -128,10 +129,41 @@ export const colorPalettes: ColorPalette[] = [
     primary: '#152229',
     secondary: '#5B6B72',
     accent: '#0F7A76',
+    accentRgb: '15, 122, 118',
     accentForeground: '#FFFFFF',
     muted: '#F2F6F6',
     mutedForeground: '#8A9AA0',
     border: '#E3E9EA',
+    card: '#FFFFFF',
+  },
+  {
+    id: 'slate',
+    name: 'Slate Blue',
+    background: '#FFFFFF',
+    foreground: '#1B2430',
+    primary: '#1B2430',
+    secondary: '#5C6B7A',
+    accent: '#2F6690',
+    accentRgb: '47, 102, 144',
+    accentForeground: '#FFFFFF',
+    muted: '#F1F5F8',
+    mutedForeground: '#8D9AA6',
+    border: '#E4E9EE',
+    card: '#FFFFFF',
+  },
+  {
+    id: 'sage',
+    name: 'Soft Sage',
+    background: '#FCFDFB',
+    foreground: '#20291F',
+    primary: '#20291F',
+    secondary: '#5E6B58',
+    accent: '#4C7C59',
+    accentRgb: '76, 124, 89',
+    accentForeground: '#FFFFFF',
+    muted: '#F0F4EE',
+    mutedForeground: '#93A08C',
+    border: '#E4EAE0',
     card: '#FFFFFF',
   },
   {
@@ -142,6 +174,7 @@ export const colorPalettes: ColorPalette[] = [
     primary: '#2B2521',
     secondary: '#75695E',
     accent: '#B5652E',
+    accentRgb: '181, 101, 46',
     accentForeground: '#FFFFFF',
     muted: '#F5EFE7',
     mutedForeground: '#A79A8C',
