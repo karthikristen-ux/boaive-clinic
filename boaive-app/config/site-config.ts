@@ -88,17 +88,9 @@ export interface TypographyPreset {
   name: string;
   displayFont: string;
   bodyFont: string;
-  displayClass: string;
-  bodyClass: string;
 }
 
 export interface AnimationPreset {
-  id: string;
-  name: string;
-  description: string;
-}
-
-export interface LayoutPreset {
   id: string;
   name: string;
   description: string;
@@ -117,165 +109,65 @@ export interface SiteConfig {
   colorPalette: string;
   typographyPreset: string;
   animationPreset: string;
-  layoutPreset: string;
   appointmentMethod: 'whatsapp' | 'phone' | 'both';
 }
 
 // ============================================================
 // COLOR PALETTES
+// Two clean, clinical palettes suited to a local/mid-size
+// dental, hair and skin practice — trustworthy and legible
+// first, decorative second.
 // ============================================================
 
 export const colorPalettes: ColorPalette[] = [
   {
-    id: 'dark',
-    name: 'Dark',
-    background: '#0c0d0f',
-    foreground: '#f8f8f8',
-    primary: '#ffffff',
-    secondary: '#9ca3af',
-    accent: '#c5a880',
-    accentForeground: '#0c0d0f',
-    muted: '#18191d',
-    mutedForeground: '#6b7280',
-    border: '#27272a',
-    card: '#141518',
-  },
-  {
-    id: 'light',
-    name: 'Light',
-    background: '#ffffff',
-    foreground: '#111827',
-    primary: '#111827',
-    secondary: '#4b5563',
-    accent: '#b8986e',
-    accentForeground: '#ffffff',
-    muted: '#f3f4f6',
-    mutedForeground: '#9ca3af',
-    border: '#e5e7eb',
-    card: '#ffffff',
-  },
-  {
-    id: 'glass',
-    name: 'Glass',
-    background: '#0b0f19',
-    foreground: '#f1f5f9',
-    primary: '#c5a880',
-    secondary: '#94a3b8',
-    accent: '#c5a880',
-    accentForeground: '#0b0f19',
-    muted: '#1e293b',
-    mutedForeground: '#64748b',
-    border: 'rgba(255,255,255,0.12)',
-    card: 'rgba(255,255,255,0.05)',
-  },
-  {
-    id: 'classic',
-    name: 'Classic',
-    background: '#FAF8F5',
-    foreground: '#1A1A1A',
-    primary: '#1A1A1A',
-    secondary: '#6B6B6B',
-    accent: '#c5a880',
-    accentForeground: '#FFFFFF',
-    muted: '#F0EDE8',
-    mutedForeground: '#8A8A8A',
-    border: '#E5E0D8',
-    card: '#FFFFFF',
-  },
-  {
-    id: 'cafe',
-    name: 'Cafe',
-    background: '#171412',
-    foreground: '#FAF5ED',
-    primary: '#F5EBE1',
-    secondary: '#A89F91',
-    accent: '#c5a880',
-    accentForeground: '#171412',
-    muted: '#241F1C',
-    mutedForeground: '#8C8275',
-    border: '#38322D',
-    card: '#1F1A17',
-  },
-  {
-    id: 'editorial',
-    name: 'Editorial',
-    background: '#FAF8F5',
-    foreground: '#1A1A1A',
-    primary: '#1A1A1A',
-    secondary: '#6B6B6B',
-    accent: '#7C8B6F',
-    accentForeground: '#FFFFFF',
-    muted: '#F0EDE8',
-    mutedForeground: '#8A8A8A',
-    border: '#E5E0D8',
-    card: '#FFFFFF',
-  },
-  {
     id: 'clinical',
-    name: 'Clinical',
-    background: '#FAFAFA',
-    foreground: '#0F172A',
-    primary: '#0F172A',
-    secondary: '#64748B',
-    accent: '#0D7377',
+    name: 'Clinical Teal',
+    background: '#FFFFFF',
+    foreground: '#152229',
+    primary: '#152229',
+    secondary: '#5B6B72',
+    accent: '#0F7A76',
     accentForeground: '#FFFFFF',
-    muted: '#F1F5F9',
-    mutedForeground: '#94A3B8',
-    border: '#E2E8F0',
+    muted: '#F2F6F6',
+    mutedForeground: '#8A9AA0',
+    border: '#E3E9EA',
     card: '#FFFFFF',
   },
   {
-    id: 'luxury',
-    name: 'Luxury',
-    background: '#FBF9F4',
-    foreground: '#2D2D2D',
-    primary: '#2D2D2D',
-    secondary: '#7A7A7A',
-    accent: '#B8986E',
+    id: 'sand',
+    name: 'Warm Sand',
+    background: '#FDFBF8',
+    foreground: '#2B2521',
+    primary: '#2B2521',
+    secondary: '#75695E',
+    accent: '#B5652E',
     accentForeground: '#FFFFFF',
-    muted: '#F4F0E8',
-    mutedForeground: '#9A9A9A',
-    border: '#E8E2D6',
+    muted: '#F5EFE7',
+    mutedForeground: '#A79A8C',
+    border: '#E9DFD3',
     card: '#FFFFFF',
   },
 ];
 
 // ============================================================
 // TYPOGRAPHY PRESETS
+// Both pairings are clean, highly legible sans body copy;
+// they differ only in how restrained or warm the headings feel.
 // ============================================================
 
 export const typographyPresets: TypographyPreset[] = [
   {
-    id: 'editorial',
-    name: 'Editorial',
-    displayFont: 'Cormorant Garamond',
-    bodyFont: 'Inter',
-    displayClass: 'font-display',
-    bodyClass: 'font-body',
-  },
-  {
     id: 'modern',
-    name: 'Modern',
-    displayFont: 'Inter',
+    name: 'Modern Clinical',
+    displayFont: 'Plus Jakarta Sans',
     bodyFont: 'Inter',
-    displayClass: 'font-body',
-    bodyClass: 'font-body',
   },
   {
-    id: 'minimal',
-    name: 'Minimal',
-    displayFont: 'Inter',
+    id: 'classic',
+    name: 'Classic Serif',
+    displayFont: 'Lora',
     bodyFont: 'Inter',
-    displayClass: 'font-body',
-    bodyClass: 'font-body',
-  },
-  {
-    id: 'luxury',
-    name: 'Luxury',
-    displayFont: 'Playfair Display',
-    bodyFont: 'Inter',
-    displayClass: 'font-luxury',
-    bodyClass: 'font-body',
   },
 ];
 
@@ -284,21 +176,8 @@ export const typographyPresets: TypographyPreset[] = [
 // ============================================================
 
 export const animationPresets: AnimationPreset[] = [
+  { id: 'smooth', name: 'Smooth', description: 'Polished, subtle transitions and reveals' },
   { id: 'minimal', name: 'Minimal', description: 'Clean, immediate motion without delay' },
-  { id: 'smooth', name: 'Smooth', description: 'Polished fluid transitions and subtle reveals' },
-  { id: 'cinematic', name: 'Cinematic', description: 'Dramatic parallax and sweeping reveals' },
-  { id: 'luxury', name: 'Luxury', description: 'Graceful slow-curves and refined ease' },
-];
-
-// ============================================================
-// LAYOUT PRESETS
-// ============================================================
-
-export const layoutPresets: LayoutPreset[] = [
-  { id: 'editorial', name: 'Editorial', description: 'Magazine-inspired with serif headings' },
-  { id: 'modern-clinical', name: 'Modern Clinical', description: 'Clean, structured, professional' },
-  { id: 'luxury', name: 'Luxury', description: 'Spacious with premium typography' },
-  { id: 'minimal', name: 'Minimal', description: 'Essential content, maximum whitespace' },
 ];
 
 // ============================================================
@@ -435,10 +314,9 @@ export const defaultConfig: SiteConfig = {
     youtube: 'https://youtube.com/@boaiveclinic',
   },
 
-  colorPalette: 'editorial',
-  typographyPreset: 'editorial',
-  animationPreset: 'signature',
-  layoutPreset: 'editorial',
+  colorPalette: 'clinical',
+  typographyPreset: 'modern',
+  animationPreset: 'smooth',
   appointmentMethod: 'both',
 };
 

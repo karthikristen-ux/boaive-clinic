@@ -36,7 +36,7 @@ export default function Gallery() {
                 className={`px-5 py-2 text-[10px] font-bold tracking-[0.1em] uppercase whitespace-nowrap transition-all duration-300 rounded-none border ${
                   activeImage === i
                     ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)]'
-                    : 'bg-white text-[var(--color-secondary)] border-transparent hover:border-[var(--color-border)]'
+                    : 'bg-[var(--color-card)] text-[var(--color-secondary)] border-transparent hover:border-[var(--color-border)]'
                 }`}
               >
                 {img.category}

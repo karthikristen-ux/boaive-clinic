@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback, ReactNode } from 'react';
-import { SiteConfig, defaultConfig, colorPalettes, ColorPalette } from '@/config/site-config';
+import { SiteConfig, defaultConfig, colorPalettes, typographyPresets, ColorPalette } from '@/config/site-config';
 
 interface ThemeContextType {
   config: SiteConfig;
@@ -86,6 +86,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     root.setAttribute('data-theme', config.colorPalette);
     root.setAttribute('data-motion', config.animationPreset);
   }, [config.colorPalette, config.animationPreset]);
+
+  React.useEffect(() => {
+    const preset = typographyPresets.find(p => p.id === config.typographyPreset) || typographyPresets[0];
+    const root = document.documentElement;
+    root.style.setProperty('--font-display', `'${preset.displayFont}', Georgia, serif`);
+    root.style.setProperty('--font-body', `'${preset.bodyFont}', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif`);
+  }, [config.typographyPreset]);
 
   const resetConfig = useCallback(() => {
     setConfig(defaultConfig);

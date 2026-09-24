@@ -54,10 +54,10 @@ export default function Header() {
           {/* Logo - Left */}
           <div className="flex items-center justify-start">
             <Link href="/" className="relative z-10" onClick={() => setMenuOpen(false)}>
-              <ClinicLogo 
-                clinicName={config.clinicName} 
-                variant={menuOpen || ['dark', 'glass', 'cafe'].includes(config.colorPalette) ? "light" : "dark"} 
-                size="sm" 
+              <ClinicLogo
+                clinicName={config.clinicName}
+                variant={menuOpen ? "light" : "dark"}
+                size="sm"
               />
             </Link>
           </div>

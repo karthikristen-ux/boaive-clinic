@@ -68,12 +68,12 @@ export default function Footer() {
             <div>
               <div className="space-y-3 text-xs md:text-sm font-medium text-[#d4d4d4]">
                 <div>
-                  <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-1">MON – FRI</span>
-                  <span className="text-[#f5f5f5]">10:00 AM – 9:00 PM</span>
+                  <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-1">WEEKDAYS</span>
+                  <span className="text-[#f5f5f5]">{config.contact.workingHours.weekdays}</span>
                 </div>
                 <div>
                   <span className="text-[#a3a3a3] text-[10px] uppercase tracking-wider block mb-1">SATURDAY</span>
-                  <span className="text-[#f5f5f5]">10:00 AM – 1:00 PM</span>
+                  <span className="text-[#f5f5f5]">{config.contact.workingHours.saturday}</span>
                 </div>
               </div>
             </div>

@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero';
 import Introduction from '@/components/Introduction';
 import ServiceCards from '@/components/ServiceCards';
-import TreatmentCarousel from '@/components/TreatmentCarousel';
 import TreatmentFinder from '@/components/TreatmentFinder';
 import ScrollStory from '@/components/ScrollStory';
 import BeforeAfter from '@/components/BeforeAfter';
@@ -15,7 +14,6 @@ export default function HomePage() {
       <Hero />
       <Introduction />
       <ServiceCards />
-      <TreatmentCarousel />
       <TreatmentFinder />
       <ScrollStory />
       <BeforeAfter />

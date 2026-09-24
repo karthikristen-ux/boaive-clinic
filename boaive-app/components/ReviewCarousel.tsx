@@ -52,14 +52,14 @@ export default function ReviewCarousel() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => scroll('left')}
-              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-white"
+              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-[var(--color-card)]"
               aria-label="Previous review"
             >
               <ChevronLeft size={16} />
             </button>
             <button
               onClick={() => scroll('right')}
-              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-white"
+              className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors bg-[var(--color-card)]"
               aria-label="Next review"
             >
               <ChevronRight size={16} />

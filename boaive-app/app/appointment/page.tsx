@@ -35,7 +35,7 @@ export default function AppointmentPage() {
 
               {/* 3 Spread-out Feature Cards */}
               <div className="flex flex-col gap-4">
-                <div className="flex items-start gap-4 p-4.5 bg-white border border-[var(--color-border)] shadow-2xs">
+                <div className="flex items-start gap-4 p-4.5 bg-[var(--color-card)] border border-[var(--color-border)] shadow-2xs">
                   <div className="w-11 h-11 shrink-0 bg-[var(--color-muted)]/60 text-[var(--color-primary)] flex items-center justify-center p-2.5">
                     <ShieldCheck size={22} />
                   </div>
@@ -49,7 +49,7 @@ export default function AppointmentPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4.5 bg-white border border-[var(--color-border)] shadow-2xs">
+                <div className="flex items-start gap-4 p-4.5 bg-[var(--color-card)] border border-[var(--color-border)] shadow-2xs">
                   <div className="w-11 h-11 shrink-0 bg-[var(--color-muted)]/60 text-[var(--color-primary)] flex items-center justify-center p-2.5">
                     <Clock size={22} />
                   </div>
@@ -63,7 +63,7 @@ export default function AppointmentPage() {
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 p-4.5 bg-white border border-[var(--color-border)] shadow-2xs">
+                <div className="flex items-start gap-4 p-4.5 bg-[var(--color-card)] border border-[var(--color-border)] shadow-2xs">
                   <div className="w-11 h-11 shrink-0 bg-[var(--color-muted)]/60 text-[var(--color-primary)] flex items-center justify-center p-2.5">
                     <MessageSquare size={22} />
                   </div>
@@ -79,7 +79,7 @@ export default function AppointmentPage() {
               </div>
 
               {/* Direct Call Assist Card */}
-              <div className="mt-5 sm:mt-6 p-4.5 bg-white border border-[var(--color-border)] shadow-xs flex items-center justify-between">
+              <div className="mt-5 sm:mt-6 p-4.5 bg-[var(--color-card)] border border-[var(--color-border)] shadow-xs flex items-center justify-between">
                 <div>
                   <p className="text-[10px] font-bold tracking-wider uppercase text-[var(--color-secondary)] mb-0.5">
                     PREFER TO SPEAK WITH US?
@@ -100,7 +100,7 @@ export default function AppointmentPage() {
 
             {/* Right Column: Appointment Wizard Form Tab (Square / Mini Rectangle Card) */}
             <div className="w-full lg:col-span-6 flex flex-col">
-              <div className="w-full bg-white border border-[var(--color-border)] p-5 sm:p-7 lg:p-7 shadow-sm flex flex-col justify-between">
+              <div className="w-full bg-[var(--color-card)] border border-[var(--color-border)] p-5 sm:p-7 lg:p-7 shadow-sm flex flex-col justify-between">
                 <AppointmentWizard />
               </div>
             </div>

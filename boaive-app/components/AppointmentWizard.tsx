@@ -194,7 +194,7 @@ export default function AppointmentWizard() {
                       setSelectedTreatment('');
                       setStep(2);
                     }}
-                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 border transition-all duration-300 hover:scale-[1.01] bg-white group cursor-pointer text-left ${
+                    className={`w-full flex items-center justify-between p-4.5 sm:p-5 md:p-6 border transition-all duration-300 hover:scale-[1.01] bg-[var(--color-card)] group cursor-pointer text-left ${
                       selectedService === service.id
                         ? 'border-[var(--color-primary)] shadow-md bg-[var(--color-muted)]/20'
                         : 'border-[var(--color-border)] hover:border-[var(--color-primary)] hover:shadow-sm'
@@ -250,7 +250,7 @@ export default function AppointmentWizard() {
                     className={`w-full flex items-center justify-between p-3.5 sm:p-4 border transition-all duration-300 text-left hover:scale-[1.005] cursor-pointer ${
                       selectedTreatment === treatment.id
                         ? 'border-[var(--color-primary)] bg-[var(--color-muted)]/40 shadow-sm'
-                        : 'border-[var(--color-border)] bg-white hover:border-[var(--color-primary)]'
+                        : 'border-[var(--color-border)] bg-[var(--color-card)] hover:border-[var(--color-primary)]'
                     }`}
                   >
                     <div className="min-w-0 pr-3">
@@ -281,7 +281,7 @@ export default function AppointmentWizard() {
               </div>
 
               {/* Calendar */}
-              <div className="w-full max-w-sm mx-auto mb-4 bg-white p-3 sm:p-4 border border-[var(--color-border)]">
+              <div className="w-full max-w-sm mx-auto mb-4 bg-[var(--color-card)] p-3 sm:p-4 border border-[var(--color-border)]">
                 <div className="flex items-center justify-between mb-3">
                   <button
                     onClick={() => {
@@ -370,7 +370,7 @@ export default function AppointmentWizard() {
                               ? 'bg-[var(--color-primary)] text-white border-[var(--color-primary)] font-semibold'
                               : isDisabled
                               ? 'opacity-30 cursor-not-allowed border-[var(--color-border)]'
-                              : 'bg-white border-[var(--color-border)] hover:border-[var(--color-primary)]'
+                              : 'bg-[var(--color-card)] border-[var(--color-border)] hover:border-[var(--color-primary)]'
                           }`}
                         >
                           {slot}

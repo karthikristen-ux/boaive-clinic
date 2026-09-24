@@ -3,14 +3,8 @@
 import { useRef } from 'react';
 import Link from 'next/link';
 import { motion, useInView } from 'framer-motion';
-import { ArrowRight, Smile, Wind, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
-
-const iconMap: Record<string, React.ReactNode> = {
-  smile: <Smile size={28} />,
-  wind: <Wind size={28} />,
-  sparkles: <Sparkles size={28} />,
-};
 
 export default function ServiceCards() {
   const { config } = useTheme();
@@ -23,33 +17,17 @@ export default function ServiceCards() {
     <section ref={ref} className="section-padding">
       <div className="container-main">
         {/* Section header */}
-        <div className="flex flex-row justify-between items-end mb-12 lg:mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
-          >
-            <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">OUR SERVICES</p>
-            <h2 className="heading-section">
-              Three paths.<br />A healthier you.
-            </h2>
-          </motion.div>
-
-          {/* Navigation Arrows (Decorative for now, could be wired to a slider later) */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : {}}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="hidden md:flex gap-4"
-          >
-            <button className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors">
-              <ArrowRight size={16} className="rotate-180" />
-            </button>
-            <button className="w-10 h-10 rounded-none border border-[var(--color-border)] flex items-center justify-center text-[var(--color-secondary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)] transition-colors">
-              <ArrowRight size={16} />
-            </button>
-          </motion.div>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="max-w-xl mb-12 lg:mb-16"
+        >
+          <p className="text-[10px] font-bold tracking-[0.2em] uppercase text-[var(--color-secondary)] mb-4">OUR SERVICES</p>
+          <h2 className="heading-section">
+            Three paths.<br />A healthier you.
+          </h2>
+        </motion.div>
 
         {/* Service cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

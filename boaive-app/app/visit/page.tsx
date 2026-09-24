@@ -85,8 +85,9 @@ export default function VisitPage() {
               <div>
                 <h3 className="font-body font-bold text-sm mb-1.5 text-[var(--color-foreground)]">Working Hours</h3>
                 <p className="font-body text-sm text-[var(--color-secondary)] leading-relaxed max-w-sm">
-                  Mon – Sat: {config.contact.workingHours.weekdays} <br />
-                  Sun: {config.contact.workingHours.sunday}
+                  {config.contact.workingHours.weekdays} <br />
+                  {config.contact.workingHours.saturday} <br />
+                  {config.contact.workingHours.sunday}
                 </p>
               </div>
             </div>

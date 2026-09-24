@@ -4,7 +4,6 @@ import { ThemeProvider } from '@/context/ThemeContext';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import ScrollProgress from '@/components/ScrollProgress';
-import FloatingCustomizer from '@/components/FloatingCustomizer';
 
 export const metadata: Metadata = {
   title: 'Boaive Clinic — Modern Care. Made Personal.',
@@ -31,7 +30,6 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
-          <FloatingCustomizer />
         </ThemeProvider>
       </body>
     </html>

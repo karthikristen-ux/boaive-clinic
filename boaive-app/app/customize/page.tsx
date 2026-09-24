@@ -2,10 +2,10 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Palette, Type, Layout, Layers, Users, Phone, Zap, Grid, Image, PenTool, Eye, Monitor, Smartphone, RotateCcw, Check } from 'lucide-react';
+import { ArrowLeft, Palette, Type, Layout, Layers, Users, Phone, Zap, Image, PenTool, Eye, Monitor, Smartphone, RotateCcw, Check } from 'lucide-react';
 import Link from 'next/link';
 import { useTheme } from '@/context/ThemeContext';
-import { colorPalettes, typographyPresets, animationPresets, layoutPresets } from '@/config/site-config';
+import { colorPalettes, typographyPresets, animationPresets } from '@/config/site-config';
 
 const tabs = [
   { id: 'branding', label: 'Branding', icon: PenTool },
@@ -17,7 +17,6 @@ const tabs = [
   { id: 'contact', label: 'Contact', icon: Phone },
   { id: 'appointment', label: 'Appointment', icon: Layout },
   { id: 'animations', label: 'Animations', icon: Zap },
-  { id: 'layout', label: 'Layout', icon: Grid },
 ];
 
 export default function CustomizePage() {
@@ -383,27 +382,6 @@ export default function CustomizePage() {
                   </div>
                 )}
 
-                {/* Layout */}
-                {activeTab === 'layout' && (
-                  <div className="space-y-4">
-                    <p className="text-xs text-[var(--color-secondary)]">Choose a layout preset</p>
-                    {layoutPresets.map((preset) => (
-                      <button
-                        key={preset.id}
-                        onClick={() => updateConfig({ layoutPreset: preset.id })}
-                        className={`w-full p-4 border transition-all text-left ${
-                          config.layoutPreset === preset.id
-                            ? 'border-[var(--color-primary)] bg-[var(--color-muted)]'
-                            : 'border-[var(--color-border)] hover:border-[var(--color-primary)]'
-                        }`}
-                      >
-                        <p className="text-sm font-medium">{preset.name}</p>
-                        <p className="text-xs text-[var(--color-secondary)] mt-1">{preset.description}</p>
-                        {config.layoutPreset === preset.id && <Check size={14} className="text-[var(--color-accent)] mt-2" />}
-                      </button>
-                    ))}
-                  </div>
-                )}
               </div>
             </div>
 

@@ -33,7 +33,7 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="section-padding bg-[var(--color-background)] border-t border-[var(--color-border)]">
         <div className="container-main flex flex-col items-center justify-center text-center">
-          <div className="w-full max-w-3xl mx-auto bg-white border border-[var(--color-border)] p-10 sm:p-14 shadow-xs flex flex-col items-center justify-center text-center">
+          <div className="w-full max-w-3xl mx-auto bg-[var(--color-card)] border border-[var(--color-border)] p-10 sm:p-14 shadow-xs flex flex-col items-center justify-center text-center">
             <p className="text-[11px] font-bold tracking-[0.25em] uppercase text-[var(--color-secondary)] mb-3">
               CONSULTATION
             </p>
@@ -83,7 +83,7 @@ function ServiceSection({ service, index }: { service: any; index: number }) {
                 {service.treatments.map((t: any) => (
                   <div
                     key={t.id}
-                    className="p-4 sm:p-4.5 bg-white border border-[var(--color-border)] shadow-2xs hover:border-[var(--color-primary)] transition-all flex flex-col justify-between"
+                    className="p-4 sm:p-4.5 bg-[var(--color-card)] border border-[var(--color-border)] shadow-2xs hover:border-[var(--color-primary)] transition-all flex flex-col justify-between"
                   >
                     <div>
                       <h3 className="font-body font-semibold text-sm text-[var(--color-foreground)] mb-1">
