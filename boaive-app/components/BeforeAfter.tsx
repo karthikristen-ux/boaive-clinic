@@ -49,6 +49,7 @@ interface BeforeAfterProps {
 export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
   const ref = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const isDraggingRef = useRef(false);
   const isInView = useInView(ref, { once: true, margin: '-80px' });
   const [activeCategory, setActiveCategory] = useState('Dental');
   const [sliderPosition, setSliderPosition] = useState(50);
@@ -57,34 +58,102 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
   const handleMove = useCallback((clientX: number) => {
     if (!sliderRef.current) return;
     const rect = sliderRef.current.getBoundingClientRect();
+    if (rect.width <= 0) return;
     const x = clientX - rect.left;
-    const percent = Math.max(5, Math.min(95, (x / rect.width) * 100));
+    const percent = Math.max(0, Math.min(100, (x / rect.width) * 100));
     setSliderPosition(percent);
   }, []);
 
-  const handleMouseDown = useCallback(() => setIsDragging(true), []);
+  const handlePointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
+    try {
+      e.currentTarget.setPointerCapture(e.pointerId);
+    } catch {}
+    isDraggingRef.current = true;
+    setIsDragging(true);
+    handleMove(e.clientX);
+  };
 
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    if (isDraggingRef.current) {
+      handleMove(e.clientX);
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent<HTMLDivElement>) => {
+    try {
+      e.currentTarget.releasePointerCapture(e.pointerId);
+    } catch {}
+    isDraggingRef.current = false;
+    setIsDragging(false);
+  };
+
+  // Direct non-passive touch listeners for mobile iOS/Android
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (isDragging) handleMove(e.clientX);
-    };
-    const handleMouseUp = () => setIsDragging(false);
-    const handleTouchMove = (e: TouchEvent) => {
-      if (isDragging) handleMove(e.touches[0].clientX);
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      isDraggingRef.current = true;
+      setIsDragging(true);
+      if (e.touches && e.touches[0]) {
+        handleMove(e.touches[0].clientX);
+      }
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mouseup', handleMouseUp);
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleMouseUp);
+    const onTouchMove = (e: TouchEvent) => {
+      if (!isDraggingRef.current) return;
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+      if (e.touches && e.touches[0]) {
+        handleMove(e.touches[0].clientX);
+      }
+    };
+
+    const onTouchEnd = () => {
+      isDraggingRef.current = false;
+      setIsDragging(false);
+    };
+
+    slider.addEventListener('touchstart', onTouchStart, { passive: true });
+    slider.addEventListener('touchmove', onTouchMove, { passive: false });
+    slider.addEventListener('touchend', onTouchEnd, { passive: true });
+    slider.addEventListener('touchcancel', onTouchEnd, { passive: true });
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mouseup', handleMouseUp);
-      window.removeEventListener('touchmove', handleTouchMove);
-      window.removeEventListener('touchend', handleMouseUp);
+      slider.removeEventListener('touchstart', onTouchStart);
+      slider.removeEventListener('touchmove', onTouchMove);
+      slider.removeEventListener('touchend', onTouchEnd);
+      slider.removeEventListener('touchcancel', onTouchEnd);
     };
-  }, [isDragging, handleMove]);
+  }, [handleMove]);
+
+  // Window pointer listeners as backup for dragging beyond bounds
+  useEffect(() => {
+    const onWindowPointerMove = (e: PointerEvent) => {
+      if (isDraggingRef.current) {
+        handleMove(e.clientX);
+      }
+    };
+
+    const onWindowPointerUp = () => {
+      if (isDraggingRef.current) {
+        isDraggingRef.current = false;
+        setIsDragging(false);
+      }
+    };
+
+    window.addEventListener('pointermove', onWindowPointerMove);
+    window.addEventListener('pointerup', onWindowPointerUp);
+    window.addEventListener('pointercancel', onWindowPointerUp);
+
+    return () => {
+      window.removeEventListener('pointermove', onWindowPointerMove);
+      window.removeEventListener('pointerup', onWindowPointerUp);
+      window.removeEventListener('pointercancel', onWindowPointerUp);
+    };
+  }, [handleMove]);
 
   const activeCase = caseStudies[activeCategory];
 
@@ -138,9 +207,12 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
           >
             <div
               ref={sliderRef}
-              className={`ba-slider relative ${compact ? 'h-[280px] sm:h-[340px] md:h-[400px] lg:h-[440px] max-h-[50vh]' : 'h-[340px] sm:h-[420px] md:h-[480px] lg:h-[540px]'} select-none cursor-ew-resize overflow-hidden`}
-              onMouseDown={handleMouseDown}
-              onTouchStart={handleMouseDown}
+              className={`ba-slider relative ${compact ? 'h-[280px] sm:h-[340px] md:h-[400px] lg:h-[440px] max-h-[50vh]' : 'h-[340px] sm:h-[420px] md:h-[480px] lg:h-[540px]'} select-none cursor-ew-resize overflow-hidden touch-none`}
+              style={{ touchAction: 'none' }}
+              onPointerDown={handlePointerDown}
+              onPointerMove={handlePointerMove}
+              onPointerUp={handlePointerUp}
+              onPointerCancel={handlePointerUp}
               role="slider"
               aria-label="Before and after comparison slider"
               aria-valuemin={0}
@@ -148,33 +220,29 @@ export default function BeforeAfter({ compact = false }: BeforeAfterProps) {
               aria-valuenow={Math.round(sliderPosition)}
               tabIndex={0}
               onKeyDown={(e) => {
-                if (e.key === 'ArrowLeft') setSliderPosition((p) => Math.max(5, p - 3));
-                if (e.key === 'ArrowRight') setSliderPosition((p) => Math.min(95, p + 3));
+                if (e.key === 'ArrowLeft') setSliderPosition((p) => Math.max(0, p - 3));
+                if (e.key === 'ArrowRight') setSliderPosition((p) => Math.min(100, p + 3));
               }}
             >
               {/* After image (full width background) */}
               <img
                 src={activeCase.after}
                 alt={`${activeCategory} After treatment`}
-                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
                 draggable={false}
               />
 
-              {/* Before image (clipped container) */}
-              <div
-                className="absolute inset-0 overflow-hidden pointer-events-none"
-                style={{ width: `${sliderPosition}%` }}
-              >
-                <div className="relative w-full h-full" style={{ width: sliderRef.current?.clientWidth || '100%' }}>
-                  <img
-                    src={activeCase.before}
-                    alt={`${activeCategory} Before treatment`}
-                    className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
-                    style={{ width: sliderRef.current?.clientWidth ? `${sliderRef.current.clientWidth}px` : '100%' }}
-                    draggable={false}
-                  />
-                </div>
-              </div>
+              {/* Before image (clipped smoothly via clipPath from right) */}
+              <img
+                src={activeCase.before}
+                alt={`${activeCategory} Before treatment`}
+                className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none select-none"
+                style={{
+                  clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                  WebkitClipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
+                }}
+                draggable={false}
+              />
 
               {/* Badges */}
               <div className="absolute bottom-6 left-6 z-10 px-6 py-2 rounded-none bg-white text-[var(--color-primary)] text-[10px] sm:text-xs font-bold tracking-[0.1em] uppercase pointer-events-none">

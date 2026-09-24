@@ -43,8 +43,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           aria-modal="true"
           aria-label="Navigation menu"
         >
-          <div className="flex-1 flex flex-col justify-center px-8 pt-20">
-            <nav className="space-y-2">
+          <div className="flex-1 flex flex-col items-center justify-center text-center px-6 pt-16">
+            <nav className="space-y-4 flex flex-col items-center justify-center text-center w-full">
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item.href}
@@ -52,11 +52,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ delay: 0.1 + i * 0.06, duration: 0.5 }}
+                  className="w-full text-center"
                 >
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="mobile-menu-item"
+                    className="mobile-menu-item text-center inline-block"
                   >
                     {item.label}
                   </Link>
@@ -69,13 +70,14 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: 0.1 + menuItems.length * 0.06, duration: 0.5 }}
+                className="w-full text-center pt-2"
               >
                 <Link
                   href="/appointment"
                   onClick={onClose}
-                  className="inline-flex items-center gap-3 mt-6 text-[var(--color-background)] font-body text-sm font-medium tracking-[0.1em] uppercase border-b border-[var(--color-background)]/30 pb-1 hover:border-[var(--color-background)] transition-colors"
+                  className="inline-flex items-center justify-center gap-3 mt-6 text-[var(--color-background)] font-body text-sm font-semibold tracking-[0.15em] uppercase border-b border-[var(--color-background)]/40 pb-1.5 hover:border-[var(--color-background)] transition-colors mx-auto"
                 >
-                  Book Appointment
+                  <span>Book Appointment</span>
                   <ArrowRight size={16} />
                 </Link>
               </motion.div>
@@ -86,38 +88,39 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ delay: 0.15 + menuItems.length * 0.06, duration: 0.5 }}
+                className="w-full text-center"
               >
                 <Link
                   href="/customize"
                   onClick={onClose}
-                  className="inline-flex items-center gap-3 mt-3 text-[var(--color-background)]/60 font-body text-sm font-medium tracking-[0.1em] uppercase hover:text-[var(--color-background)] transition-colors"
+                  className="inline-flex items-center justify-center gap-3 mt-3 text-[var(--color-background)]/60 font-body text-xs font-medium tracking-[0.15em] uppercase hover:text-[var(--color-background)] transition-colors mx-auto"
                 >
-                  Customize Demo
-                  <ArrowRight size={16} />
+                  <span>Customize Demo</span>
+                  <ArrowRight size={14} />
                 </Link>
               </motion.div>
             </nav>
           </div>
 
-          {/* Bottom section */}
+          {/* Bottom section - Centered */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.5 }}
-            className="px-8 pb-10"
+            className="px-6 pb-10 flex flex-col items-center justify-center text-center"
           >
-            <div className="flex items-center gap-6 mb-6">
-              <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors" aria-label="Instagram">
+            <div className="flex items-center justify-center gap-7 mb-4">
+              <a href={config.social.instagram} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors p-1" aria-label="Instagram">
                 <InstagramIcon size={20} />
               </a>
-              <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors" aria-label="Facebook">
+              <a href={config.social.facebook} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors p-1" aria-label="Facebook">
                 <FacebookIcon size={20} />
               </a>
-              <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors" aria-label="YouTube">
+              <a href={config.social.youtube} target="_blank" rel="noopener noreferrer" className="text-[var(--color-background)]/60 hover:text-[var(--color-background)] transition-colors p-1" aria-label="YouTube">
                 <YoutubeIcon size={20} />
               </a>
             </div>
-            <p className="text-[var(--color-background)]/40 text-xs tracking-wider uppercase">
+            <p className="text-[var(--color-background)]/40 text-[10px] tracking-[0.25em] uppercase text-center">
               {config.tagline}
             </p>
           </motion.div>
